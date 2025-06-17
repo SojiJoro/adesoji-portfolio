@@ -223,20 +223,33 @@ const projectData: Record<string, Project> = {
   },
 }
 
+// 1. generateStaticParams remains synchronous:
 export function generateStaticParams() {
   return Object.keys(projectData).map((slug) => ({ slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = projectData[params.slug]
+// 2. generateMetadata must treat params as Promise and await it:
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const project = projectData[slug]
   return {
     title: project?.title || 'Project Not Found',
     description: project?.description || '',
   }
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projectData[params.slug]
+// 3. Page component must be async and await params:
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const project = projectData[slug]
   if (!project) notFound()
 
   return (
