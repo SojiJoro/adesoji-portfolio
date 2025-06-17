@@ -1,7 +1,25 @@
+// src/components/Footer.tsx
+
+import Link from 'next/link'
+
 export default function Footer() {
   return (
-    <footer className="p-4 border-t text-center text-sm mt-10">
-      © {new Date().getFullYear()} Adesoji Adejoro
+    <footer className="footer">
+      <div className="container space-y-4">
+        <p className="text-center text-gray-600">
+          &copy; {new Date().getFullYear()} Adesoji Adejoro. All rights reserved.
+        </p>
+        <div className="text-center">
+          <a
+            href="https://calendly.com/your-calendly-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+          >
+            Free AWS Cost Audit
+          </a>
+        </div>
+      </div>
     </footer>
   )
 }
