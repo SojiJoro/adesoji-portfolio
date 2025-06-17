@@ -1,6 +1,7 @@
 // src/app/page.tsx
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HomePage() {
   return (
@@ -15,12 +16,12 @@ export default function HomePage() {
           AWS | Kubernetes | Terraform | Tech Support Lead | Advocate for Dyslexia in Tech
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <a href="/resume" className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow hover:bg-teal-700 transition">
+          <Link href="/resume" className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow hover:bg-teal-700 transition">
             View Resume
-          </a>
-          <a href="/contact" className="border border-teal-600 text-teal-600 px-6 py-3 rounded-lg hover:bg-teal-50 transition">
+          </Link>
+          <Link href="/contact" className="border border-teal-600 text-teal-600 px-6 py-3 rounded-lg hover:bg-teal-50 transition">
             Contact Me
-          </a>
+          </Link>
         </div>
         {/* Optional background shape */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-teal-50 via-white to-white" />
