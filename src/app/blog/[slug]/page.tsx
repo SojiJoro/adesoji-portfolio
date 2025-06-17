@@ -1,58 +1,108 @@
-// src/app/blog/[slug]/page.tsx
+// src/app/projects/[slug]/page.tsx
 
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
-// Example static posts data. For production, consider reading from files or CMS.
-const blogPosts: Record<string, { title: string; content: string }> = {
-  'aws-cost-optimisation-tactics': {
-    title: 'AWS Cost Optimisation Tactics That Delivered 25% Savings',
-    content: `
-<p>In this article, I share practical AWS cost optimisation tactics I implemented to reduce spend by 25% while maintaining performance and reliability...</p>
-<!-- Expand with your full post content, or load from MDX -->
-`,
-  },
-  'sre-dyslexia-advocacy': {
-    title: 'My Journey as a Dyslexic Engineer in SRE',
-    content: `
-<p>Sharing my experience navigating the tech world as a dyslexic engineer, lessons learned, and tips for fellow neurodiverse professionals...</p>
-<!-- Expand accordingly -->
-`,
-  },
+interface ProjectDetail {
+  heading: string
+  content: string
 }
 
+interface Project {
+  title: string
+  description: string
+  details: ProjectDetail[]
+}
+
+// Static project data; in production, load from CMS/files, etc.
+const projectData: Record<string, Project> = {
+  'rds-failover': {
+    title: 'AWS RDS Global Database Failover',
+    description:
+      'Architected a fully automated, cross-region failover solution using Aurora Global Database to meet a 99.99% availability SLA.',
+    details: [
+      {
+        heading: 'Overview',
+        content:
+          'Our finance application relied on a single‐region Aurora PostgreSQL cluster (us-east-1). Scheduled maintenance or transient issues risked minutes of downtime, impacting thousands of daily transactions.',
+      },
+      // ...other detail items...
+    ],
+  },
+  'monitoring-stack': {
+    title: 'Prometheus & Grafana Monitoring Stack',
+    description:
+      'Built an end-to-end monitoring and alerting solution on EKS, reducing MTTR by 70% and enabling proactive incident response.',
+    details: [
+      {
+        heading: 'Overview',
+        content:
+          'Our microservices on EKS lacked centralised metrics. Engineers spent hours diagnosing issues using logs alone.',
+      },
+      // ...other detail items...
+    ],
+  },
+  // Add more projects as needed...
+}
+
+// 1. generateStaticParams remains synchronous:
 export function generateStaticParams() {
-  return Object.keys(blogPosts).map((slug) => ({ slug }))
+  return Object.keys(projectData).map((slug) => ({ slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = blogPosts[params.slug]
-  if (!post) {
+// 2. generateMetadata must treat params as Promise and await it:
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const project = projectData[slug]
+  if (!project) {
     return {
-      title: 'Post Not Found',
+      title: 'Project Not Found',
       description: '',
     }
   }
   return {
-    title: post.title,
-    description: post.title,
+    title: project.title,
+    description: project.description,
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug]
-  if (!post) notFound()
+// 3. Page component must be async and await params:
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const project = projectData[slug]
+  if (!project) notFound()
 
   return (
-    <article className="section bg-white">
-      <div className="container max-w-3xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <div
-          className="prose prose-lg text-gray-700"
-          // Danger: if using dangerouslySetInnerHTML, ensure content is sanitized or comes from trusted source
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+    <section className="section bg-white">
+      <div className="container max-w-3xl space-y-8 mx-auto">
+        {/* Title & Description */}
+        <h1 className="text-4xl font-bold">{project.title}</h1>
+        <p className="text-lg text-gray-600">{project.description}</p>
+
+        {/* Detailed Sections */}
+        {project.details.map(({ heading, content }) => (
+          <div key={heading} className="mt-8">
+            <h2 className="text-2xl font-semibold mb-2">{heading}</h2>
+            <p className="text-gray-700 whitespace-pre-line">{content}</p>
+          </div>
+        ))}
+
+        {/* Back Button */}
+        <div className="mt-8">
+          <Link href="/projects" className="btn btn-outline">
+            ← Back to Projects
+          </Link>
+        </div>
       </div>
-    </article>
+    </section>
   )
 }

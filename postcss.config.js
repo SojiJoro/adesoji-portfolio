@@ -1,8 +1,7 @@
-// Use the official Tailwind PostCSS plugin so new at-rules like `@theme`
-// are processed correctly. Autoprefixer remains for vendor prefixes.
+/** @type {import('postcss').ProcessOptions} */
 module.exports = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    '@tailwindcss/postcss': {},   // use the new bridge plugin
     autoprefixer: {},
   },
 }

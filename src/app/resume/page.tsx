@@ -1,7 +1,6 @@
 // src/app/resume/page.tsx
 
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Resume – Adesoji Adejoro',
