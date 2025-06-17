@@ -1,4 +1,4 @@
-/* src/styles/globals.css */
+/* styles/globals.css */
 
 @tailwind base;
 @tailwind components;
@@ -67,40 +67,42 @@ section {
 }
 
 /* Buttons */
-.btn {
-  @apply inline-block px-6 py-3 rounded-lg font-medium shadow-md transition-transform transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-teal-500;
-}
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-3 rounded-lg font-medium shadow-md transition-transform transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-teal-500;
+  }
 
-.btn-primary {
-  @apply bg-teal-600 text-white hover:bg-teal-700;
-}
+  .btn-primary {
+    @apply bg-teal-600 text-white hover:bg-teal-700;
+  }
 
-.btn-outline {
-  @apply border border-teal-600 text-teal-600 hover:bg-teal-50;
-}
+  .btn-outline {
+    @apply border border-teal-600 text-teal-600 hover:bg-teal-50;
+  }
 
-.btn-dark {
-  @apply bg-gray-900 text-white hover:bg-gray-800;
-}
+  .btn-dark {
+    @apply bg-gray-900 text-white hover:bg-gray-800;
+  }
 
-/* Sections */
-.hero-bg {
-  background: linear-gradient(135deg, #ecfdf5, #ffffff);
-}
+  /* Sections */
+  .hero-bg {
+    background: linear-gradient(135deg, #ecfdf5, #ffffff);
+  }
 
-.highlight-card {
-  @apply bg-white p-6 rounded-xl shadow-md transition hover:shadow-lg;
-}
+  .highlight-card {
+    @apply bg-white p-6 rounded-xl shadow-md transition hover:shadow-lg;
+  }
 
-/* Utilities */
-.flex-center {
-  @apply flex items-center justify-center;
-}
+  /* Utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 
-.text-gradient {
-  background: linear-gradient(to right, #0d9488, #0891b2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  .text-gradient {
+    background: linear-gradient(to right, #0d9488, #0891b2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 /* Scrollbar Styling */
