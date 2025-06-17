@@ -1,120 +1,245 @@
-/* styles/globals.css */
+/* src/styles/globals.css */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* =========================
+   CSS Variables & Reset
+   ========================= */
+:root {
+  --color-primary: #0d9488;
+  --color-primary-dark: #0f766e;
+  --color-secondary: #ffffff;
+  --color-text: #111827;
+  --color-text-light: #4b5563;
+  --color-bg: #f9fafb;
+  --color-accent: #0891b2;
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-/* Base Styling */
-html,
-body {
-  scroll-behavior: smooth;
-  font-family: 'Inter', sans-serif;
-  background-color: #f9fafb;
-  color: #111827;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
+  --font-sans: 'Inter', sans-serif;
+  --transition-speed: 0.3s;
 }
 
 *, *::before, *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-p {
-  margin-bottom: 1rem;
-  color: #4b5563;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
 a {
+  color: var(--color-primary);
   text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
+  transition: opacity var(--transition-speed);
 }
 
 a:hover {
-  opacity: 0.9;
-  color: #0d9488;
-}
-
-ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  opacity: 0.8;
 }
 
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+  display: block;
 }
 
-section {
-  padding: 4rem 1rem;
+ul {
+  list-style: disc;
+  margin-left: 1.5rem;
 }
 
 .container {
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
-/* Buttons */
-@layer components {
-  .btn {
-    @apply inline-block px-6 py-3 rounded-lg font-medium shadow-md transition-transform transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-teal-500;
-  }
+/* =========================
+   Buttons
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
 
-  .btn-primary {
-    @apply bg-teal-600 text-white hover:bg-teal-700;
-  }
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border: 2px solid var(--color-primary);
+}
 
-  .btn-outline {
-    @apply border border-teal-600 text-teal-600 hover:bg-teal-50;
-  }
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
 
-  .btn-dark {
-    @apply bg-gray-900 text-white hover:bg-gray-800;
-  }
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
 
-  /* Sections */
-  .hero-bg {
-    background: linear-gradient(135deg, #ecfdf5, #ffffff);
-  }
+.btn-outline:hover {
+  background-color: rgba(13,148,136,0.1);
+}
 
-  .highlight-card {
-    @apply bg-white p-6 rounded-xl shadow-md transition hover:shadow-lg;
-  }
+/* =========================
+   Navbar
+   ========================= */
+.navbar {
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-  /* Utilities */
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
 
-  .text-gradient {
-    background: linear-gradient(to right, #0d9488, #0891b2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.navbar .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-text);
+}
+
+/* Responsive nav (mobile) */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
   }
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
+/* =========================
+   Hero Section
+   ========================= */
+.hero {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+  text-align: center;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #0f766e;
-  border-radius: 10px;
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
+.hero__title .highlight {
+  color: var(--color-primary);
 }
+
+.hero__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.hero__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Sections
+   ========================= */
+.section {
+  padding: 4rem 0;
+}
+
+.section--highlights {
+  background-color: var(--color-secondary);
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.highlight-card {
+  background-color: var(--color-secondary);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.highlight-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-card p {
+  color: var(--color-text-light);
+}
+
+/* =========================
+   Footer
+   ========================= */
+.footer {
+  background-color: var(--color-secondary);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* =========================
+   Utility Classes
+   ========================= */
+.text-gradient {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt-large {
+  margin-top: 3rem;
+}
+
+.mb-large {
+  margin-bottom: 3rem;
+}
+
+/* End of globals.css */
