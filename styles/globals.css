@@ -1,0 +1,118 @@
+// src/styles/globals.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Base Styling */
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #4b5563;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.9;
+  color: #0d9488;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+section {
+  padding: 4rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-block px-6 py-3 rounded-lg font-medium shadow-md transition-transform transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-teal-500;
+}
+
+.btn-primary {
+  @apply bg-teal-600 text-white hover:bg-teal-700;
+}
+
+.btn-outline {
+  @apply border border-teal-600 text-teal-600 hover:bg-teal-50;
+}
+
+.btn-dark {
+  @apply bg-gray-900 text-white hover:bg-gray-800;
+}
+
+/* Sections */
+.hero-bg {
+  background: linear-gradient(135deg, #ecfdf5, #ffffff);
+}
+
+.highlight-card {
+  @apply bg-white p-6 rounded-xl shadow-md transition hover:shadow-lg;
+}
+
+/* Utilities */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #0d9488, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0f766e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
