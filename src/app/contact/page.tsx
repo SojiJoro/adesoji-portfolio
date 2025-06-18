@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="text-center mb-large">
           <h2 className="text-4xl font-extrabold text-gradient mb-4">Get in Touch</h2>
           <p className="text-lg text-gray-600">
-            Whether you’ve got a question, idea, or just want to say hello — I’m all ears.
+            Whether you&rsquo;ve got a question, idea, or just want to say hello &mdash; I&rsquo;m all ears.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
 
             <div className="bg-[var(--color-bg)] p-6 rounded-lg shadow">
               <p className="text-[var(--color-text-light)]">
-                I'm happy to chat about tech, answer questions, or provide clarity on anything you've seen here.
+                I&rsquo;m happy to chat about tech, answer questions, or provide clarity on anything you&rsquo;ve seen here.
               </p>
             </div>
           </div>
