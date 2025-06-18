@@ -8,15 +8,17 @@
   --color-primary-dark: #0f766e;
   --color-secondary: #ffffff;
   --color-text: #111827;
-  --color-text-light: #4b5563;
+  --color-text-light: #6b7280;
   --color-bg: #f9fafb;
-  --color-accent: #0891b2;
+  --color-accent: #14b8a6;
 
   --font-sans: 'Inter', sans-serif;
   --transition-speed: 0.3s;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -31,7 +33,20 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+/* =========================
+   Typography & Basics
+   ========================= */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-text-light);
 }
 
 a {
@@ -55,10 +70,27 @@ ul {
   margin-left: 1.5rem;
 }
 
+/* =========================
+   Layout Utilities
+   ========================= */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt-large {
+  margin-top: 3rem;
+}
+
+.mb-large {
+  margin-bottom: 3rem;
 }
 
 /* =========================
@@ -71,6 +103,7 @@ ul {
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
+  text-align: center;
 }
 
 .btn-primary {
@@ -91,7 +124,75 @@ ul {
 }
 
 .btn-outline:hover {
-  background-color: rgba(13,148,136,0.1);
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
+/* =========================
+   Hero Section
+   ========================= */
+.hero {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.hero__title .highlight {
+  color: var(--color-primary);
+}
+
+.hero__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.hero__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* =========================
+   Highlight Cards
+   ========================= */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.highlight-card {
+  background-color: var(--color-secondary);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+}
+
+.highlight-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-card p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
 }
 
 /* =========================
@@ -99,7 +200,7 @@ ul {
    ========================= */
 .navbar {
   background-color: var(--color-secondary);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -132,79 +233,10 @@ ul {
   color: var(--color-text);
 }
 
-/* Responsive nav (mobile) */
 @media (max-width: 768px) {
   .navbar .nav-links {
     display: none;
   }
-}
-
-/* =========================
-   Hero Section
-   ========================= */
-.hero {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
-  text-align: center;
-}
-
-.hero__title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.hero__title .highlight {
-  color: var(--color-primary);
-}
-
-.hero__subtitle {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  margin-bottom: 2rem;
-}
-
-.hero__buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* =========================
-   Sections
-   ========================= */
-.section {
-  padding: 4rem 0;
-}
-
-.section--highlights {
-  background-color: var(--color-secondary);
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.highlight-card {
-  background-color: var(--color-secondary);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.highlight-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.highlight-card p {
-  color: var(--color-text-light);
 }
 
 /* =========================
@@ -216,30 +248,14 @@ ul {
   text-align: center;
   font-size: 0.875rem;
   color: var(--color-text-light);
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* =========================
-   Utility Classes
+   Utility
    ========================= */
 .text-gradient {
   background: linear-gradient(to right, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mt-large {
-  margin-top: 3rem;
-}
-
-.mb-large {
-  margin-bottom: 3rem;
-}
-
-/* End of globals.css */

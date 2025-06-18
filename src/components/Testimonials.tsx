@@ -4,7 +4,7 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote: 'Led our AWS cost reduction initiative, saving 25% annually while improving system resilience.',
-      author: 'Former Manager, Eiger Trading Advisors',
+      author: 'Former Manager.',
     },
     {
       quote: 'Automated our monitoring stack with Grafana & Prometheus, cutting MTTR by 70%.',
