@@ -10,7 +10,7 @@ export default function HomePage() {
       <section className="hero bg-gradient-to-br from-gray-50 to-gray-100 py-20" data-aos="fade-up">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h1 className="hero__title text-5xl md:text-6xl font-bold mb-6">
-            Hi, I'm <span className="highlight text-teal-600">Adesoji</span><br/>
+            Hi, I&apos;m <span className="highlight text-teal-600">Adesoji</span><br/>
             <span className="text-3xl md:text-4xl text-gray-700 mt-2 block">SRE, DevOps & Support Lead</span>
           </h1>
           <p className="hero__subtitle text-xl text-gray-600 mb-8 max-w-3xl mx-auto">

@@ -9,8 +9,8 @@ const testimonials = [
     id: 1,
     quote: "Led our AWS cost reduction initiative, saving 25% annually while improving system resilience.",
     author: "Former Manager",
-    role: "C.T.O ",
-  
+    role: "Engineering Director",
+    company: "Financial Services"
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ export default function Testimonials() {
         
         <blockquote className="text-center">
           <p className="text-xl md:text-2xl font-medium text-gray-800 mb-6">
-            "{testimonials[activeIndex].quote}"
+            &ldquo;{testimonials[activeIndex].quote}&rdquo;
           </p>
           <footer>
             <cite className="not-italic">
