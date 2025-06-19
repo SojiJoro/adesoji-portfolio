@@ -22,10 +22,10 @@ const ResumePage = () => {
 const opt = {
   margin: 0.5,
   filename: 'Adesoji_Adejoro_Resume.pdf',
-  image: { type: 'jpeg', quality: 0.98 } as const,
+  image: { type: 'jpeg', quality: 0.98 },
   html2canvas: { scale: 2 },
-  jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' as const }
-}
+  jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+} as const
       
       // Correct API usage
       html2pdf().set(opt).from(element).save()

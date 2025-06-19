@@ -22,10 +22,10 @@ export default function ResumeAnonPage() {
 const opt = {
   margin: 0.5,
   filename: 'Resume_Anonymised.pdf',
-  image: { type: 'jpeg', quality: 0.98 } as const,
+  image: { type: 'jpeg', quality: 0.98 },
   html2canvas: { scale: 2 },
-  jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' as const }
-}
+  jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+} as const
       
       // Correct API usage
       html2pdf().set(opt).from(element).save()
