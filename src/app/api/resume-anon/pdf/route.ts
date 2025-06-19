@@ -5,11 +5,11 @@ import puppeteer from 'puppeteer-core'
 export async function GET(req: NextRequest) {
   const url = `${req.nextUrl.origin}/resume-anon` // this route must exist
 
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH // optional
-  })
+const browser = await puppeteer.launch({
+  headless: true,
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH // optional
+})
 
   const page = await browser.newPage()
   await page.goto(url, { waitUntil: 'networkidle0' })
