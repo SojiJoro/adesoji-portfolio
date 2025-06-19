@@ -15,19 +15,25 @@ const ResumePage = () => {
     if (!resumeRef.current || !isClient) return
     
     try {
-      // Dynamically import html2pdf.js only on client side
       const html2pdf = (await import('html2pdf.js')).default
       
       const element = resumeRef.current
-const opt = {
-  margin: 0.5,
-  filename: 'Adesoji_Adejoro_Resume.pdf',
-  image: { type: 'jpeg', quality: 0.98 },
-  html2canvas: { scale: 2 },
-  jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-} as const
+      const opt = {
+        margin: 0.5,
+        filename: 'Adesoji_Adejoro_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          onclone: (clonedDoc: Document) => {
+            // Hide buttons in the cloned document
+            clonedDoc.querySelectorAll('.no-print').forEach(el => {
+              (el as HTMLElement).style.display = 'none'
+            })
+          }
+        },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      } as const
       
-      // Correct API usage
       html2pdf().set(opt).from(element).save()
     } catch (error) {
       console.error('Error generating PDF:', error)
@@ -60,7 +66,7 @@ const opt = {
           <div>
             <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
             <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 mt-4 no-print">
               <button 
                 onClick={downloadPdf} 
                 className="btn btn-primary"
@@ -75,6 +81,8 @@ const opt = {
           </div>
 
           <hr className="border-gray-300" />
+
+          {/* Rest of your content remains the same... */}
 
           <div>
             <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
