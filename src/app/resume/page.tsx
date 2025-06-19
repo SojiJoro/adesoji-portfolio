@@ -3,25 +3,26 @@
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
 import type { jsPDFOptions } from 'jspdf'
+import dynamic from 'next/dynamic'
 
-export default function ResumePage() {
+const ResumePage = () => {
   const resumeRef = useRef<HTMLElement>(null)
-type Html2PdfType = {
-  from: (element: HTMLElement) => {
-    set: (options: {
-      margin: number
-      filename: string
-      image: { type: string; quality: number }
-      html2canvas: { scale: number }
-      jsPDF: jsPDFOptions
-    }) => {
-      save: () => void
+
+  type Html2PdfType = {
+    from: (element: HTMLElement) => {
+      set: (options: {
+        margin: number
+        filename: string
+        image: { type: string; quality: number }
+        html2canvas: { scale: number }
+        jsPDF: jsPDFOptions
+      }) => {
+        save: () => void
+      }
     }
   }
-}
 
-const html2pdfRef = useRef<Html2PdfType | null>(null)
-
+  const html2pdfRef = useRef<Html2PdfType | null>(null)
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
@@ -29,19 +30,18 @@ const html2pdfRef = useRef<Html2PdfType | null>(null)
     })
   }, [])
 
-const downloadPdf = () => {
-if (!resumeRef.current || !html2pdfRef.current) return
-html2pdfRef.current
-  .from(resumeRef.current)
-    .set({
+  const downloadPdf = () => {
+    if (!resumeRef.current || !html2pdfRef.current) return
+    const element = resumeRef.current
+    const opt = {
       margin: 0.5,
       filename: 'Adesoji_Adejoro_Resume.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    })
-    .save()
-}
+    }
+    html2pdfRef.current.from(element).set(opt).save()
+  }
   const skills = [
     'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
     'Azure, GCP, Hybrid Cloud Environments',
