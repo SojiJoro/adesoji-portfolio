@@ -2,14 +2,26 @@
 
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
-
-// Add global declaration for html2pdf.js to resolve build error
-// Create a new file at src/types/html2pdf.d.ts with the following:
-// declare module 'html2pdf.js';
+import type { jsPDFOptions } from 'jspdf'
 
 export default function ResumeAnonPage() {
   const anonRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<any>(null) // changed back to any to avoid TS error without typing
+type Html2PdfType = {
+  from: (element: HTMLElement) => {
+    set: (options: {
+      margin: number
+      filename: string
+      image: { type: string; quality: number }
+      html2canvas: { scale: number }
+      jsPDF: jsPDFOptions
+    }) => {
+      save: () => void
+    }
+  }
+}
+
+const html2pdfRef = useRef<Html2PdfType | null>(null)
+
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
@@ -17,19 +29,19 @@ export default function ResumeAnonPage() {
     })
   }, [])
 
-  const downloadPdf = () => {
-    if (!anonRef.current || !html2pdfRef.current) return
-    html2pdfRef.current()
-      .from(anonRef.current)
-      .set({
-        margin: 0.5,
-        filename: 'Resume_Anonymised.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-      })
-      .save()
-  }
+const downloadPdf = () => {
+  if (!anonRef.current || !html2pdfRef.current) return
+  html2pdfRef.current
+    .from(anonRef.current)
+    .set({
+      margin: 0.5,
+      filename: 'Resume_Anonymised.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    })
+    .save()
+}
 
   const skills = [
     'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
@@ -57,9 +69,17 @@ export default function ResumeAnonPage() {
           <div>
             <h1 className="text-4xl font-bold">Site Reliability Engineer & DevOps Lead</h1>
             <p className="text-lg text-gray-700 mt-1">Anonymised Candidate Profile</p>
-            <button onClick={downloadPdf} className="btn btn-primary mt-4">
-              Download Anonymised CV
-            </button>
+            <div className="flex gap-4 mt-4">
+              <button onClick={downloadPdf} className="btn btn-primary">
+                Download Anonymised CV
+              </button>
+              <a
+                href="/resume"
+                className="btn btn-secondary"
+              >
+                View Full CV
+              </a>
+            </div>
           </div>
 
           <hr className="border-gray-300" />

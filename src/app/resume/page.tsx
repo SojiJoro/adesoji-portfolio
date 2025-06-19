@@ -2,14 +2,26 @@
 
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
-
-// Add global declaration for html2pdf.js to resolve build error
-// Create a new file at src/types/html2pdf.d.ts with the following:
-// declare module 'html2pdf.js';
+import type { jsPDFOptions } from 'jspdf'
 
 export default function ResumePage() {
   const resumeRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<any>(null) // changed back to any to avoid TS error without typing
+type Html2PdfType = {
+  from: (element: HTMLElement) => {
+    set: (options: {
+      margin: number
+      filename: string
+      image: { type: string; quality: number }
+      html2canvas: { scale: number }
+      jsPDF: jsPDFOptions
+    }) => {
+      save: () => void
+    }
+  }
+}
+
+const html2pdfRef = useRef<Html2PdfType | null>(null)
+
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
@@ -17,31 +29,31 @@ export default function ResumePage() {
     })
   }, [])
 
-  const downloadPdf = () => {
-    if (!resumeRef.current || !html2pdfRef.current) return
-    html2pdfRef.current()
-      .from(resumeRef.current)
-      .set({
-        margin: 0.5,
-        filename: 'Adesoji_Adejoro_Resume.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-      })
-      .save()
-  }
+const downloadPdf = () => {
+if (!resumeRef.current || !html2pdfRef.current) return
+html2pdfRef.current
+  .from(resumeRef.current)
+    .set({
+      margin: 0.5,
+      filename: 'Adesoji_Adejoro_Resume.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    })
+    .save()
+}
+
 
   const skills = [
-    'AWS (EC2, S3, RDS, Lambda, EKS, VPC, IAM, CloudWatch, CloudTrail, Cost Explorer)',
-    'Azure (Azure AD, Intune, Exchange Online, MDM)',
-    'Infrastructure as Code (Terraform, Ansible, CloudFormation)',
-    'Kubernetes (EKS, GKE), Docker, Containerisation',
-    'CI/CD (GitHub Actions, Jenkins, TeamCity, GitLab CI)',
-    'Linux & Windows server administration, Bash, PowerShell, Python scripting',
-    'Monitoring & observability (Prometheus, Grafana, ELK, Loki, Tempo)',
-    'Incident management (SLIs, SLOs, error budgets, chaos engineering)',
-    'Security & compliance (VPC, network segmentation, IAM, encryption, GuardDuty)',
-    'DevOps practices, peer code reviews, pull request approvals, Git'
+    'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
+    'Azure, GCP, Hybrid Cloud Environments',
+    'Terraform, CloudFormation, Ansible, Azure Bicep',
+    'Kubernetes, Docker, Helm, Argo CD',
+    'CI/CD: GitHub Actions, GitLab CI, Jenkins, TeamCity',
+    'Monitoring: Prometheus, Grafana, Loki, ELK, Tempo',
+    'Scripting: Python, PowerShell, Bash',
+    'Incident Response: SLIs, SLOs, Chaos Engineering',
+    'Cost & Security: FinOps, IAM, Encryption, GuardDuty'
   ]
 
   return (
@@ -58,9 +70,17 @@ export default function ResumePage() {
           <div>
             <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
             <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
-            <button onClick={downloadPdf} className="btn btn-primary mt-4">
-              Download Full CV
-            </button>
+            <div className="flex gap-4 mt-4">
+              <button onClick={downloadPdf} className="btn btn-primary">
+                Download Full CV
+              </button>
+              <a
+                href="/resume-anon"
+                className="btn btn-secondary"
+              >
+                View Anonymised CV
+              </a>
+            </div>
           </div>
 
           <hr className="border-gray-300" />
