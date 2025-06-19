@@ -1,47 +1,38 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
-import type { jsPDFOptions } from 'jspdf'
 
 export default function ResumeAnonPage() {
-  const anonRef = useRef<HTMLElement>(null)
-type Html2PdfType = {
-  from: (element: HTMLElement) => {
-    set: (options: {
-      margin: number
-      filename: string
-      image: { type: string; quality: number }
-      html2canvas: { scale: number }
-      jsPDF: jsPDFOptions
-    }) => {
-      save: () => void
-    }
-  }
-}
-
-const html2pdfRef = useRef<Html2PdfType | null>(null)
-
+  const anonRef = useRef<HTMLDivElement>(null)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    import('html2pdf.js').then((mod) => {
-      html2pdfRef.current = mod.default || mod
-    })
+    setIsClient(true)
   }, [])
 
-const downloadPdf = () => {
-  if (!anonRef.current || !html2pdfRef.current) return
-  html2pdfRef.current
-    .from(anonRef.current)
-    .set({
-      margin: 0.5,
-      filename: 'Resume_Anonymised.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    })
-    .save()
-}
+  const downloadPdf = async () => {
+    if (!anonRef.current || !isClient) return
+    
+    try {
+      // Dynamically import html2pdf.js only on client side
+      const html2pdf = (await import('html2pdf.js')).default
+      
+      const element = anonRef.current
+      const opt = {
+        margin: 0.5,
+        filename: 'Resume_Anonymised.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' as const }
+      }
+      
+      // Correct API usage
+      html2pdf().set(opt).from(element).save()
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+    }
+  }
 
   const skills = [
     'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
@@ -64,13 +55,17 @@ const downloadPdf = () => {
           content="Anonymised version of an experienced DevOps/SRE professional resume."
         />
       </Head>
-      <section ref={anonRef} className="section bg-gray-50 p-8">
+      <div ref={anonRef} className="section bg-gray-50 p-8">
         <div className="container max-w-3xl mx-auto space-y-8">
           <div>
             <h1 className="text-4xl font-bold">Site Reliability Engineer & DevOps Lead</h1>
             <p className="text-lg text-gray-700 mt-1">Anonymised Candidate Profile</p>
             <div className="flex gap-4 mt-4">
-              <button onClick={downloadPdf} className="btn btn-primary">
+              <button 
+                onClick={downloadPdf} 
+                className="btn btn-primary"
+                disabled={!isClient}
+              >
                 Download Anonymised CV
               </button>
               <a
@@ -163,7 +158,7 @@ const downloadPdf = () => {
             </p>
           </div>
         </div>
-      </section>
+      </div>
     </>
   )
 }
