@@ -16,7 +16,7 @@ export default function ResumePage() {
     'CI/CD (GitHub Actions, Jenkins, TeamCity, GitLab CI)',
     'Linux & Windows server administration, Bash, PowerShell, Python scripting',
     'Monitoring & observability (Prometheus, Grafana, ELK, Loki, Tempo)',
-    'Incident management (SRE best practices: SLIs, SLOs, error budgets, chaos engineering)',
+    'Incident management (SLIs, SLOs, error budgets, chaos engineering)',
     'Security & compliance (VPC, network segmentation, IAM, encryption, GuardDuty)',
     'DevOps practices, peer code reviews, pull request approvals, Git'
   ]
@@ -24,37 +24,42 @@ export default function ResumePage() {
   return (
     <section className="section bg-gray-50">
       <div className="container max-w-3xl mx-auto space-y-8">
+
         {/* Header */}
         <div>
           <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
           <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:gap-4">
-            {/* Ensure the PDF exists at public/documents/Adesoji_Adejoro_Resume.pdf */}
-            <a href="/documents/Adesoji_Adejoro_Resume.pdf" download className="btn btn-primary">
-              Download Full Resume (PDF)
+          <div className="mt-4 flex gap-4">
+            <a href="/api/resume/pdf" download className="btn btn-primary">
+              Download Full CV
+            </a>
+            <a href="/api/resume-anon/pdf" download className="btn btn-secondary">
+              Download Anonymised CV
             </a>
           </div>
         </div>
 
         <hr className="border-gray-300" />
 
-        {/* Summary */}
+        {/* Professional Summary */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
           <p>
-            Site Reliability Engineer & DevOps Lead with over 8 years’ experience designing, building and supporting scalable AWS & hybrid cloud environments. Skilled in automation, CI/CD pipelines, observability, incident response, security compliance and FinOps. Proven track record reducing costs (25% AWS savings), improving uptime via SLIs/SLOs, and delivering efficient remote support and infrastructure.
+            Site Reliability Engineer & DevOps Lead with over 8 years’ experience designing, building and
+            supporting scalable AWS & hybrid cloud environments. Skilled in automation, CI/CD pipelines,
+            observability, incident response, security compliance and FinOps. Proven track record reducing costs
+            (25% AWS savings), improving uptime via SLIs/SLOs, and delivering efficient remote support and
+            infrastructure.
           </p>
         </div>
 
         <hr className="border-gray-300" />
 
-        {/* Core Skills */}
+        {/* Core Skills & Tools */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Core Skills & Tools</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
+            {skills.map(skill => <li key={skill}>{skill}</li>)}
           </ul>
         </div>
 
@@ -84,37 +89,37 @@ export default function ResumePage() {
               Eiger Trading Advisors Ltd, London (Hybrid) • Jul 2022 – Present
             </p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Led AWS architecture: EC2, Lambda, RDS, EKS, VPC, IAM, CloudWatch/CloudTrail with IaC using Terraform & CloudFormation</li>
+              <li>Led AWS architecture: EC2, Lambda, RDS, EKS, VPC, IAM, CloudWatch/CloudTrail with IaC (Terraform & CloudFormation)</li>
               <li>Delivered 25% AWS cost reduction via rightsizing, Savings Plans, Reserved Instances, and lifecycle policies</li>
-              <li>Defined SLIs/SLOs, error budgets, and led post-mortems for incident response</li>
-              <li>Built observability stacks: Prometheus, Grafana, ELK, Loki, Tempo</li>
+              <li>Defined SLIs/SLOs, managed error budgets and led post-mortems</li>
+              <li>Built observability stacks using Prometheus, Grafana, ELK, Loki and Tempo</li>
               <li>Automated CI/CD with GitHub Actions, TeamCity and Jenkins</li>
-              <li>Optimised EKS clusters: pod autoscaling, Helm charts, DR across UK/Frankfurt</li>
+              <li>Optimised EKS clusters: pod autoscaling, Helm charts and multi-region DR</li>
               <li>Introduced chaos testing for resilience training</li>
-              <li>Enforced IAM least-privilege, encryption, and automated compliance audits</li>
-              <li>Provided remote support, hardware staging, VPN and SSO for trading floor staff</li>
+              <li>Enforced IAM least-privilege, encryption at rest/in transit and automated compliance audits</li>
+              <li>Provided remote support, hardware staging, VPN and SSO for cross-region staff</li>
             </ul>
           </div>
 
           {/* Beyond Cloud Solutions */}
-<div className="space-y-2 mb-6">
-  <h3 className="text-xl font-bold">DevOps Engineer</h3>
-  <p className="text-base text-gray-700">
-    Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022
-  </p>
-  <ul className="list-disc pl-5 space-y-1 text-gray-700">
-    <li>Engineered scalable Kubernetes clusters with Helm and Argo CD, boosting reliability and reducing incident rates by 40%</li>
-    <li>Implemented GitOps workflows and CI/CD pipelines using GitLab CI and Jenkins, accelerating deployment frequency by 50%</li>
-    <li>Optimised PostgreSQL performance tuning with automated pgTune scripts, achieving 30% faster query response</li>
-    <li>Developed AI-driven monitoring alerts using Prometheus and Grafana Loki, proactively identifying anomalies</li>
-    <li>Automated VPN and software provisioning with PowerShell DSC and AWS Systems Manager, saving 15 engineer hours weekly</li>
-    <li>Designed Infrastructure-as-Code modules for AWS & Azure with Terraform v1.5 and Azure Bicep, ensuring compliance and repeatability</li>
-    <li>Migrated legacy workloads to serverless architectures (AWS Lambda & Fargate), reducing operational costs by 60%</li>
-    <li>Integrated FinOps practices with AWS Cost Explorer, Budgets and Anomaly Detection to cut monthly cloud spend by 20%</li>
-    <li>Built ChatOps tooling using AWS Chatbot and Slack, enabling real-time deployment status and incident notifications</li>
-    <li>Piloted ML-driven autoscaling policies with Kubernetes HPA and AWS SageMaker metrics, improving resource utilisation by 35%</li>
-  </ul>
-</div>
+          <div className="space-y-2 mb-6">
+            <h3 className="text-xl font-bold">DevOps Engineer</h3>
+            <p className="text-base text-gray-700">
+              Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+              <li>Engineered scalable Kubernetes clusters with Helm and Argo CD, reducing incidents by 40%</li>
+              <li>Implemented GitOps workflows and CI/CD pipelines with GitLab CI and Jenkins, boosting deployment speed by 50%</li>
+              <li>Optimised PostgreSQL with automated pgTune scripts for 30% faster queries</li>
+              <li>Developed AI-driven alerts in Prometheus & Grafana Loki to detect anomalies</li>
+              <li>Automated VPN and software provisioning via PowerShell DSC & AWS Systems Manager, saving 15 hours/week</li>
+              <li>Built IaC modules for AWS & Azure using Terraform v1.5 and Bicep</li>
+              <li>Migrated legacy workloads to serverless (Lambda & Fargate), reducing costs by 60%</li>
+              <li>Integrated FinOps alerts (Cost Explorer, Budgets, Anomaly Detection), cutting spend by 20%</li>
+              <li>Created ChatOps with AWS Chatbot & Slack for real-time deployments</li>
+              <li>Piloted ML-based autoscaling with HPA & SageMaker metrics, utilising resources 35% more efficiently</li>
+            </ul>
+          </div>
 
           {/* Kinetik */}
           <div className="space-y-2 mb-6">
@@ -123,9 +128,9 @@ export default function ResumePage() {
               Kinetik, UK • Jan 2020 – Dec 2020
             </p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Managed internal MediaWiki, ensuring uptime and backups</li>
-              <li>Generated SQL/Excel reports to support decision-making</li>
-              <li>Enhanced CMS content structure and SEO performance</li>
+              <li>Managed MediaWiki platform: uptime, backups and updates</li>
+              <li>Generated SQL & Excel reports to inform leadership decisions</li>
+              <li>Structured CMS content and improved SEO performance</li>
             </ul>
           </div>
 
@@ -136,11 +141,11 @@ export default function ResumePage() {
               Safe-Complex (Remote / Hybrid) • Jan 2017 – Dec 2019
             </p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Managed multi-cloud infrastructure: AWS, GCP, Azure, IBM Cloud</li>
-              <li>Automated deployments and cost savings with Terraform, Ansible, Python</li>
-              <li>Developed Go & Python tooling to streamline DevOps workflows</li>
-              <li>Maintained EKS/GKE and Docker environments</li>
-              <li>Automated support tasks, reducing incident resolution time</li>
+              <li>Managed multi-cloud infrastructure (AWS, GCP, Azure, IBM Cloud)</li>
+              <li>Automated deployments with Terraform, Ansible and Python</li>
+              <li>Developed Go & Python tooling to speed up operational tasks</li>
+              <li>Maintained EKS & GKE clusters and Docker environments</li>
+              <li>Streamlined support tasks to reduce MTTR in live environments</li>
             </ul>
           </div>
 
@@ -151,10 +156,10 @@ export default function ResumePage() {
               New Horizon, Nigeria • Jan 2015 – Dec 2017
             </p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Supported 100+ users with hardware, software, and network issues</li>
+              <li>Supported 100+ users with hardware, software and network issues</li>
               <li>Configured VLANs, managed Active Directory, and delivered training</li>
-              <li>Led Google Workspace to Microsoft 365 migration, reducing licence costs</li>
-              <li>Documented runbooks in Confluence for faster onboarding</li>
+              <li>Led Google Workspace → Microsoft 365 migration, cutting licence costs</li>
+              <li>Authored runbooks in Confluence to accelerate onboarding</li>
               <li>Resolved high-priority tickets in ServiceNow</li>
             </ul>
           </div>
@@ -177,10 +182,10 @@ export default function ResumePage() {
         <div>
           <h2 className="text-2xl font-semibold mb-3">Volunteering & Projects</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Advocate for neuro-inclusive hiring: LinkedIn content on dyslexia inclusion</li>
-            <li>Built Python-Slack SSL expiry alerts for certificate automation</li>
-            <li>Created reusable Terraform modules for EC2, RDS, ALB deployments</li>
-            <li>Optimised Jira Service Desk: SLAs, ticket classification, auto-responses</li>
+            <li>Advocate for neuro-inclusive hiring via LinkedIn content</li>
+            <li>Built Python-Slack SSL expiry alerts for cloud services</li>
+            <li>Created reusable Terraform modules for EC2, RDS & ALB</li>
+            <li>Optimised Jira Service Desk: SLAs, ticket classification & auto-responses</li>
           </ul>
         </div>
 
@@ -191,6 +196,7 @@ export default function ResumePage() {
           <h2 className="text-2xl font-semibold mb-3">References</h2>
           <p className="text-gray-700">Available upon request.</p>
         </div>
+
       </div>
     </section>
   )
