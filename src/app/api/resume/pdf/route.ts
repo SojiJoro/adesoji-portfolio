@@ -3,12 +3,12 @@ import { NextRequest } from 'next/server'
 import puppeteer from 'puppeteer-core'
 
 export async function GET(req: NextRequest) {
-  const url = `${req.nextUrl.origin}/resume` // or change to the exact route path
+  const url = `${req.nextUrl.origin}/resume`
 
   const browser = await puppeteer.launch({
-    headless: 'new',
+    headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH // optional override for deployment
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
   })
 
   const page = await browser.newPage()
@@ -22,4 +22,4 @@ export async function GET(req: NextRequest) {
       'Content-Disposition': 'attachment; filename="Adesoji_Adejoro_Resume.pdf"',
     },
   })
-} 
+}
