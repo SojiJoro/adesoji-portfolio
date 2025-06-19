@@ -5,7 +5,7 @@ import Head from 'next/head'
 
 export default function ResumeAnonPage() {
   const anonRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<any>(null)
+  const html2pdfRef = useRef<typeof import('html2pdf.js') | null>(null)
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {

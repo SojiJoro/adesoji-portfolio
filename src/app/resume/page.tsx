@@ -1,13 +1,11 @@
-// src/app/resume/page.tsx
-
 'use client'
 
-import Head from 'next/head'
 import { useEffect, useRef } from 'react'
+import Head from 'next/head'
 
 export default function ResumePage() {
   const resumeRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<any>(null)
+  const html2pdfRef = useRef<typeof import('html2pdf.js') | null>(null)
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
@@ -53,7 +51,6 @@ export default function ResumePage() {
       </Head>
       <section ref={resumeRef} className="section bg-gray-50 p-8">
         <div className="container max-w-3xl mx-auto space-y-8">
-          {/* Header */}
           <div>
             <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
             <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
@@ -64,7 +61,6 @@ export default function ResumePage() {
 
           <hr className="border-gray-300" />
 
-          {/* Professional Summary */}
           <div>
             <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
             <p>
@@ -78,7 +74,6 @@ export default function ResumePage() {
 
           <hr className="border-gray-300" />
 
-          {/* Core Skills & Tools */}
           <div>
             <h2 className="text-2xl font-semibold mb-3">Core Skills & Tools</h2>
             <ul className="list-disc pl-5 space-y-2 text-gray-700">
@@ -88,7 +83,6 @@ export default function ResumePage() {
 
           <hr className="border-gray-300" />
 
-          {/* Certifications */}
           <div>
             <h2 className="text-2xl font-semibold mb-3">Certifications</h2>
             <ul className="list-disc pl-5 space-y-2 text-gray-700">
@@ -101,7 +95,6 @@ export default function ResumePage() {
 
           <hr className="border-gray-300" />
 
-          {/* Final Section */}
           <div>
             <h2 className="text-2xl font-semibold mb-3">Education</h2>
             <p className="text-gray-700">
