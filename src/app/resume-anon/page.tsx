@@ -1,12 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Anonymised Resume',
-  description: 'Anonymised version of an experienced DevOps/SRE professional resume.',
-}
+import Head from 'next/head'
 
 export default function ResumeAnonPage() {
   const anonRef = useRef<HTMLElement>(null)
@@ -45,106 +40,110 @@ export default function ResumeAnonPage() {
   ]
 
   return (
-    <section ref={anonRef} className="section bg-gray-50 p-8">
-      <div className="container max-w-3xl mx-auto space-y-8">
-        {/* Header */}
-        <div>
-          <h1 className="text-4xl font-bold">Site Reliability Engineer & DevOps Lead</h1>
-          <p className="text-lg text-gray-700 mt-1">Anonymised Candidate Profile</p>
-          <button onClick={downloadPdf} className="btn btn-primary mt-4">
-            Download Anonymised CV
-          </button>
+    <>
+      <Head>
+        <title>Anonymised Resume</title>
+        <meta
+          name="description"
+          content="Anonymised version of an experienced DevOps/SRE professional resume."
+        />
+      </Head>
+      <section ref={anonRef} className="section bg-gray-50 p-8">
+        <div className="container max-w-3xl mx-auto space-y-8">
+          <div>
+            <h1 className="text-4xl font-bold">Site Reliability Engineer & DevOps Lead</h1>
+            <p className="text-lg text-gray-700 mt-1">Anonymised Candidate Profile</p>
+            <button onClick={downloadPdf} className="btn btn-primary mt-4">
+              Download Anonymised CV
+            </button>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
+            <p>
+              Experienced SRE/DevOps Engineer with 8+ years delivering scalable, cloud-native infrastructure across
+              AWS, Azure, and hybrid environments. Proven in cost optimisation (25%+ AWS savings), infrastructure as
+              code, Kubernetes, and observability. Combines deep technical capability with reliability engineering,
+              FinOps awareness, and cross-team collaboration.
+            </p>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Core Skills & Tools</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              {skills.map(skill => <li key={skill}>{skill}</li>)}
+            </ul>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Certifications</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              <li>AWS Certified Solutions Architect – Associate</li>
+              <li>Certified Scrum Master (CSM)</li>
+              <li>In progress: AWS Certified DevOps Engineer – Professional</li>
+            </ul>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Experience Summary</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              <li>Current: SRE/DevOps Lead at a UK-based financial tech company, managing multi-region AWS and Kubernetes</li>
+              <li>Previously: Cloud/DevOps Engineer for a US-based remote consultancy, driving IaC, GitOps, ML-enabled autoscaling</li>
+              <li>Past IT Support/Admin roles with growing infrastructure automation responsibilities</li>
+            </ul>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Notable Achievements</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              <li>Reduced AWS spend by 25%+ via FinOps tools, RIs and anomaly detection</li>
+              <li>Built ML-driven autoscaling for EKS, improving resource use by 35%</li>
+              <li>Created GitOps workflows doubling deployment speed and confidence</li>
+              <li>Migrated legacy workloads to serverless (Lambda & Fargate), cutting costs by 60%</li>
+              <li>Automated ChatOps with AWS Chatbot & Slack for real-time alerts</li>
+            </ul>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Education</h2>
+            <p className="text-gray-700">
+              MSc in Technology & Data Analytics (UK University)<br />
+              BSc in Computer Science (West African University)
+            </p>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Recruiter Notes</h2>
+            <p className="text-gray-700">
+              Anonymised profile highlights strengths in AWS architecture, Kubernetes, automation, and cost
+              optimisation. Full details and references available on request.
+            </p>
+          </div>
+
+          <hr className="border-gray-300" />
+
+          <div className="pb-8">
+            <h2 className="text-2xl font-semibold mb-3">Availability & Work Rights</h2>
+            <p className="text-gray-700">
+              UK-based candidate with valid sponsored visa. Open to remote, hybrid or on-site opportunities.
+            </p>
+          </div>
         </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Professional Summary */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
-          <p>
-            Experienced SRE/DevOps Engineer with 8+ years delivering scalable, cloud-native infrastructure across AWS, Azure, and hybrid environments. Proven in cost optimisation (25%+ AWS savings), infrastructure as code, Kubernetes, and observability. Combines deep technical capability with reliability engineering, FinOps awareness, and cross-team collaboration.
-          </p>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Core Skills & Tools */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Core Skills & Tools</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            {skills.map(skill => <li key={skill}>{skill}</li>)}
-          </ul>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Certifications */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Certifications</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>AWS Certified Solutions Architect – Associate</li>
-            <li>Certified Scrum Master (CSM)</li>
-            <li>In progress: AWS Certified DevOps Engineer – Professional</li>
-          </ul>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Experience Summary */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Experience Summary</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Current: SRE/DevOps Lead at a UK-based financial tech company, managing multi-region AWS and Kubernetes</li>
-            <li>Previously: Cloud/DevOps Engineer for a US-based remote consultancy, driving IaC, GitOps, ML-enabled autoscaling</li>
-            <li>Past IT Support/Admin roles with growing infrastructure automation responsibilities</li>
-          </ul>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Notable Achievements */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Notable Achievements</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Reduced AWS spend by 25%+ via FinOps tools, RIs and anomaly detection</li>
-            <li>Built ML-driven autoscaling for EKS, improving resource use by 35%</li>
-            <li>Created GitOps workflows doubling deployment speed and confidence</li>
-            <li>Migrated legacy workloads to serverless (Lambda & Fargate), cutting costs by 60%</li>
-            <li>Automated ChatOps with AWS Chatbot & Slack for real-time alerts</li>
-          </ul>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Education */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Education</h2>
-          <p className="text-gray-700">
-            MSc in Technology & Data Analytics (UK University)<br />
-            BSc in Computer Science (West African University)
-          </p>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Recruiter Notes */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Recruiter Notes</h2>
-          <p className="text-gray-700">
-            Anonymised profile highlights strengths in AWS architecture, Kubernetes, automation, and cost optimisation. Full details and references available on request.
-          </p>
-        </div>
-
-        <hr className="border-gray-300" />
-
-        {/* Availability & Work Rights */}
-        <div className="pb-8">
-          <h2 className="text-2xl font-semibold mb-3">Availability & Work Rights</h2>
-          <p className="text-gray-700">
-            UK-based candidate with valid sponsored visa. Open to remote, hybrid or on-site opportunities.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
