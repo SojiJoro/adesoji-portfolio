@@ -94,11 +94,25 @@ export default function ResumeAnonPage() {
 
         <hr className="border-gray-300" />
 
+        <div>
+          <h2 className="text-2xl font-semibold mb-3">Recruiter Notes</h2>
+          <p className="text-gray-700">
+            This anonymised profile highlights the candidate’s strengths in AWS architecture, Kubernetes, automation, and cost optimisation. Contact for full profile, references, or availability confirmation.
+          </p>
+        </div>
+
+        <hr className="border-gray-300" />
+
         <div className="pb-8">
           <h2 className="text-2xl font-semibold mb-3">Availability & Work Rights</h2>
           <p className="text-gray-700">
             UK-based candidate with valid sponsored visa. Open to remote, hybrid or UK on-site opportunities.
           </p>
+          <div className="mt-4">
+            <a href="/api/resume-anon/pdf" download className="btn btn-primary">
+              Download Anonymised Resume (PDF)
+            </a>
+          </div>
         </div>
       </div>
     </section>
