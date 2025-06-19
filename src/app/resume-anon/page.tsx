@@ -3,9 +3,13 @@
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
 
+// Add global declaration for html2pdf.js to resolve build error
+// Create a new file at src/types/html2pdf.d.ts with the following:
+// declare module 'html2pdf.js';
+
 export default function ResumeAnonPage() {
   const anonRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<typeof import('html2pdf.js') | null>(null)
+  const html2pdfRef = useRef<any>(null) // changed back to any to avoid TS error without typing
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
@@ -63,10 +67,7 @@ export default function ResumeAnonPage() {
           <div>
             <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
             <p>
-              Experienced SRE/DevOps Engineer with 8+ years delivering scalable, cloud-native infrastructure across
-              AWS, Azure, and hybrid environments. Proven in cost optimisation (25%+ AWS savings), infrastructure as
-              code, Kubernetes, and observability. Combines deep technical capability with reliability engineering,
-              FinOps awareness, and cross-team collaboration.
+              Experienced SRE/DevOps Engineer with 8+ years delivering scalable, cloud-native infrastructure across AWS, Azure, and hybrid environments. Proven in cost optimisation (25%+ AWS savings), infrastructure as code, Kubernetes, and observability. Combines deep technical capability with reliability engineering, FinOps awareness, and cross-team collaboration.
             </p>
           </div>
 
@@ -129,8 +130,7 @@ export default function ResumeAnonPage() {
           <div>
             <h2 className="text-2xl font-semibold mb-3">Recruiter Notes</h2>
             <p className="text-gray-700">
-              Anonymised profile highlights strengths in AWS architecture, Kubernetes, automation, and cost
-              optimisation. Full details and references available on request.
+              Anonymised profile highlights strengths in AWS architecture, Kubernetes, automation, and cost optimisation. Full details and references available on request.
             </p>
           </div>
 

@@ -3,9 +3,13 @@
 import { useEffect, useRef } from 'react'
 import Head from 'next/head'
 
+// Add global declaration for html2pdf.js to resolve build error
+// Create a new file at src/types/html2pdf.d.ts with the following:
+// declare module 'html2pdf.js';
+
 export default function ResumePage() {
   const resumeRef = useRef<HTMLElement>(null)
-  const html2pdfRef = useRef<typeof import('html2pdf.js') | null>(null)
+  const html2pdfRef = useRef<any>(null) // changed back to any to avoid TS error without typing
 
   useEffect(() => {
     import('html2pdf.js').then((mod) => {
