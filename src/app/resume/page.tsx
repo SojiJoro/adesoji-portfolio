@@ -24,16 +24,23 @@ export default function ResumePage() {
   return (
     <section className="section bg-gray-50">
       <div className="container max-w-3xl mx-auto space-y-8">
-
         {/* Header */}
         <div>
           <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
           <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
           <div className="mt-4 flex gap-4">
-            <a href="/api/resume/pdf" download className="btn btn-primary">
+            <a
+              href="/api/resume/pdf"
+              download="Adesoji_Adejoro_Resume.pdf"
+              className="btn btn-primary"
+            >
               Download Full CV
             </a>
-            <a href="/api/resume-anon/pdf" download className="btn btn-secondary">
+            <a
+              href="/api/resume-anon/pdf"
+              download="Resume_Anonymised.pdf"
+              className="btn btn-secondary"
+            >
               Download Anonymised CV
             </a>
           </div>
@@ -45,11 +52,7 @@ export default function ResumePage() {
         <div>
           <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
           <p>
-            Site Reliability Engineer & DevOps Lead with over 8 years’ experience designing, building and
-            supporting scalable AWS & hybrid cloud environments. Skilled in automation, CI/CD pipelines,
-            observability, incident response, security compliance and FinOps. Proven track record reducing costs
-            (25% AWS savings), improving uptime via SLIs/SLOs, and delivering efficient remote support and
-            infrastructure.
+            Site Reliability Engineer & DevOps Lead with over 8 years’ experience designing, building and supporting scalable AWS & hybrid cloud environments. Skilled in automation, CI/CD pipelines, observability, incident response, security compliance and FinOps. Proven track record reducing costs (25% AWS savings), improving uptime via SLIs/SLOs, and delivering efficient remote support and infrastructure.
           </p>
         </div>
 
