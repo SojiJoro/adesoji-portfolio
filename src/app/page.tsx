@@ -10,12 +10,12 @@ export default function HomePage() {
       <section className="hero bg-gradient-to-br from-gray-50 to-gray-100 py-20" data-aos="fade-up">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h1 className="hero__title text-5xl md:text-6xl font-bold mb-6">
-            Hi, I&apos;m <span className="text-3xl md:text-4xl text-gray-700 mt-2 block">Adesoji</span><br/>
-            <span className="text-3xl md:text-4xl text-gray-700 mt-2 block">SRE, DevOps & Support Lead</span>
-          </h1>
-          <p className="hero__subtitle text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            AWS | Kubernetes | Terraform | Tech Support Leadership | Neurodiversity Advocate
-          </p>
+  Hi, I&apos;m <span className="text-[#0f766e] font-bold">Adesoji</span><br/>
+  <span className="text-3xl md:text-4xl text-gray-900 mt-2 block">SRE, DevOps & Support Lead</span>
+</h1>
+<p className="hero__subtitle text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+  AWS | Kubernetes | Terraform | Tech Support Leadership | Neurodiversity Advocate
+</p>
           <div className="hero__buttons flex gap-4 justify-center">
             <Link href="/resume" className="btn btn-primary px-8 py-3">
               View Resume
