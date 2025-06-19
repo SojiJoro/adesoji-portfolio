@@ -38,27 +38,27 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <section className="section bg-white">
+    <section className="section dark-section min-h-screen">
       <div className="container">
-        <h1 className="text-3xl font-bold mb-6">Selected Projects</h1>
-        <div className="highlight-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h1 className="text-4xl font-bold mb-8 text-white">Selected Projects</h1>
+        <div className="projects-grid">
           {projects.map(({ slug, title, description }, i) => (
             <div
               key={slug}
-              className="highlight-card flex flex-col justify-between"
+              className="project-card"
               data-aos="fade-up"
               data-aos-delay={(i + 1) * 100}
             >
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                <p className="text-sm text-gray-600">{description}</p>
+              <div className="project-card-content">
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <Link
+                  href={`/projects/${slug}`}
+                  className="btn-learn-more"
+                >
+                  Learn More
+                </Link>
               </div>
-              <Link
-                href={`/projects/${slug}`}
-                className="mt-4 btn btn-outline self-start"
-              >
-                Learn More
-              </Link>
             </div>
           ))}
         </div>

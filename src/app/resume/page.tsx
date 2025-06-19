@@ -61,7 +61,7 @@ const ResumePage = () => {
           content="Adesoji Adejoro – SRE & DevOps professional specialising in AWS, Kubernetes, CI/CD, automation and incident response."
         />
       </Head>
-      <div ref={resumeRef} className="section bg-gray-50 p-8">
+      <div ref={resumeRef} className="resume-page section bg-gray-50 p-8">
         <div className="container max-w-3xl mx-auto space-y-8">
           <div>
             <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>

@@ -452,9 +452,9 @@ ul {
 .text-teal-600 { color: var(--color-accent); }
 .text-teal-700 { color: var(--color-primary); }
 .text-gray-600 { color: var(--color-text-light); }
-.text-gray-700 { color: #374151; }
-.text-gray-800 { color: #1f2937; }
-.text-gray-900 { color: var(--color-text); }
+.text-gray-700 { color: #f7f9fb; }
+.text-gray-800 { color: #e6e9ed; }
+.text-gray-900 { color: #f7f9fb; }
 
 /* Hover utilities */
 .hover\:bg-gray-100:hover { background-color: #f3f4f6; }
@@ -696,7 +696,7 @@ ul {
     --color-bg: #111827;
     --color-secondary: #1f2937;
     --color-text: #f9fafb;
-    --color-text-light: #9ca3af;
+    --color-text-light: #f7f9fb;
   }
   
   .highlight-card {
@@ -721,4 +721,222 @@ ul {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+/* =========================
+   Resume Page Styles
+   ========================= */
+.resume-page {
+  background-color: #1a202c;
+  color: white;
+  min-height: 100vh;
+}
+
+.resume-page h1,
+.resume-page h2,
+.resume-page h3,
+.resume-page h4,
+.resume-page p,
+.resume-page li {
+  color: white;
+}
+
+.resume-page .text-gray-600,
+.resume-page .text-gray-700 {
+  color: #cbd5e0; /* Light gray for better contrast on dark background */
+}
+
+.resume-page hr {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.resume-page .btn-primary {
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  color: white;
+  border: none;
+}
+
+.resume-page .btn-secondary {
+  background: transparent;
+  color: #14b8a6;
+  border: 2px solid #14b8a6;
+}
+
+.resume-page .btn-secondary:hover {
+  background: #14b8a6;
+  color: white;
+}
+
+/* =========================
+   Project Cards Styles
+   ========================= */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #14b8a6;
+  transform: translateY(-4px);
+}
+
+.project-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  color: #cbd5e0;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.project-card .btn-learn-more {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  color: #14b8a6;
+  border: 1px solid #14b8a6;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.project-card .btn-learn-more:hover {
+  background: #14b8a6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* =========================
+   Dark Section & Projects Page
+   ========================= */
+.dark-section {
+  background-color: #1a202c;
+  color: white;
+  padding: 5rem 0;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Project Cards */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #14b8a6;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.2);
+}
+
+.project-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.project-card p {
+  color: #cbd5e0;
+  flex: 1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-learn-more {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.625rem 1.5rem;
+  background: transparent;
+  color: #14b8a6;
+  border: 1px solid #14b8a6;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-learn-more:hover {
+  background: #14b8a6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Text color for dark sections */
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section p,
+.dark-section li {
+  color: white;
+}
+
+.text-white {
+  color: white !important;
 }
