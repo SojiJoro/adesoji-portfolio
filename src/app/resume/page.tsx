@@ -1,5 +1,6 @@
-// src/app/resume/page.tsx
+'use client'
 
+import { useEffect, useRef } from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,6 +9,29 @@ export const metadata: Metadata = {
 }
 
 export default function ResumePage() {
+  const resumeRef = useRef<HTMLElement>(null)
+  const html2pdfRef = useRef<any>(null)
+
+  useEffect(() => {
+    import('html2pdf.js').then((mod) => {
+      html2pdfRef.current = mod.default || mod
+    })
+  }, [])
+
+  const downloadPdf = () => {
+    if (!resumeRef.current || !html2pdfRef.current) return
+    html2pdfRef.current()
+      .from(resumeRef.current)
+      .set({
+        margin: 0.5,
+        filename: 'Adesoji_Adejoro_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      })
+      .save()
+  }
+
   const skills = [
     'AWS (EC2, S3, RDS, Lambda, EKS, VPC, IAM, CloudWatch, CloudTrail, Cost Explorer)',
     'Azure (Azure AD, Intune, Exchange Online, MDM)',
@@ -22,28 +46,15 @@ export default function ResumePage() {
   ]
 
   return (
-    <section className="section bg-gray-50">
+    <section ref={resumeRef} className="section bg-gray-50 p-8">
       <div className="container max-w-3xl mx-auto space-y-8">
         {/* Header */}
         <div>
           <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
           <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
-          <div className="mt-4 flex gap-4">
-            <a
-              href="/api/resume/pdf"
-              download="Adesoji_Adejoro_Resume.pdf"
-              className="btn btn-primary"
-            >
-              Download Full CV
-            </a>
-            <a
-              href="/api/resume-anon/pdf"
-              download="Resume_Anonymised.pdf"
-              className="btn btn-secondary"
-            >
-              Download Anonymised CV
-            </a>
-          </div>
+          <button onClick={downloadPdf} className="btn btn-primary mt-4">
+            Download Full CV
+          </button>
         </div>
 
         <hr className="border-gray-300" />
@@ -88,14 +99,12 @@ export default function ResumePage() {
           {/* Eiger Trading Advisors */}
           <div className="space-y-2 mb-6">
             <h3 className="text-xl font-bold">Site Reliability Engineer & DevOps Lead</h3>
-            <p className="text-sm text-gray-600">
-              Eiger Trading Advisors Ltd, London (Hybrid) • Jul 2022 – Present
-            </p>
+            <p className="text-sm text-gray-600">Eiger Trading Advisors Ltd, London (Hybrid) • Jul 2022 – Present</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
               <li>Led AWS architecture: EC2, Lambda, RDS, EKS, VPC, IAM, CloudWatch/CloudTrail with IaC (Terraform & CloudFormation)</li>
               <li>Delivered 25% AWS cost reduction via rightsizing, Savings Plans, Reserved Instances, and lifecycle policies</li>
               <li>Defined SLIs/SLOs, managed error budgets and led post-mortems</li>
-              <li>Built observability stacks using Prometheus, Grafana, ELK, Loki and Tempo</li>
+              <li>Built observability stacks: Prometheus, Grafana, ELK, Loki, Tempo</li>
               <li>Automated CI/CD with GitHub Actions, TeamCity and Jenkins</li>
               <li>Optimised EKS clusters: pod autoscaling, Helm charts and multi-region DR</li>
               <li>Introduced chaos testing for resilience training</li>
@@ -107,11 +116,9 @@ export default function ResumePage() {
           {/* Beyond Cloud Solutions */}
           <div className="space-y-2 mb-6">
             <h3 className="text-xl font-bold">DevOps Engineer</h3>
-            <p className="text-base text-gray-700">
-              Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022
-            </p>
+            <p className="text-base text-gray-700">Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Engineered scalable Kubernetes clusters with Helm and Argo CD, reducing incidents by 40%</li>
+              <li>Engineered scalable Kubernetes clusters with Helm and Argo CD, reducing incident rates by 40%</li>
               <li>Implemented GitOps workflows and CI/CD pipelines with GitLab CI and Jenkins, boosting deployment speed by 50%</li>
               <li>Optimised PostgreSQL with automated pgTune scripts for 30% faster queries</li>
               <li>Developed AI-driven alerts in Prometheus & Grafana Loki to detect anomalies</li>
@@ -127,9 +134,7 @@ export default function ResumePage() {
           {/* Kinetik */}
           <div className="space-y-2 mb-6">
             <h3 className="text-xl font-bold">Web/System Administrator</h3>
-            <p className="text-sm text-gray-600">
-              Kinetik, UK • Jan 2020 – Dec 2020
-            </p>
+            <p className="text-sm text-gray-600">Kinetik, UK • Jan 2020 – Dec 2020</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
               <li>Managed MediaWiki platform: uptime, backups and updates</li>
               <li>Generated SQL & Excel reports to inform leadership decisions</li>
@@ -140,9 +145,7 @@ export default function ResumePage() {
           {/* Safe-Complex */}
           <div className="space-y-2 mb-6">
             <h3 className="text-xl font-bold">DevOps Engineer</h3>
-            <p className="text-sm text-gray-600">
-              Safe-Complex (Remote / Hybrid) • Jan 2017 – Dec 2019
-            </p>
+            <p className="text-sm text-gray-600">Safe-Complex (Remote / Hybrid) • Jan 2017 – Dec 2019</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
               <li>Managed multi-cloud infrastructure (AWS, GCP, Azure, IBM Cloud)</li>
               <li>Automated deployments with Terraform, Ansible and Python</li>
@@ -155,9 +158,7 @@ export default function ResumePage() {
           {/* New Horizon */}
           <div className="space-y-2 mb-6">
             <h3 className="text-xl font-bold">IT Support Engineer</h3>
-            <p className="text-sm text-gray-600">
-              New Horizon, Nigeria • Jan 2015 – Dec 2017
-            </p>
+            <p className="text-sm text-gray-600">New Horizon, Nigeria • Jan 2015 – Dec 2017</p>
             <ul className="list-disc pl-5 space-y-1 text-gray-700">
               <li>Supported 100+ users with hardware, software and network issues</li>
               <li>Configured VLANs, managed Active Directory, and delivered training</li>
@@ -199,7 +200,6 @@ export default function ResumePage() {
           <h2 className="text-2xl font-semibold mb-3">References</h2>
           <p className="text-gray-700">Available upon request.</p>
         </div>
-
       </div>
     </section>
   )

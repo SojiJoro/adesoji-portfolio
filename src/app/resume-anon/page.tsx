@@ -1,4 +1,6 @@
-// src/app/resume-anon/page.tsx
+'use client'
+
+import { useEffect, useRef } from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,6 +9,29 @@ export const metadata: Metadata = {
 }
 
 export default function ResumeAnonPage() {
+  const anonRef = useRef<HTMLElement>(null)
+  const html2pdfRef = useRef<any>(null)
+
+  useEffect(() => {
+    import('html2pdf.js').then((mod) => {
+      html2pdfRef.current = mod.default || mod
+    })
+  }, [])
+
+  const downloadPdf = () => {
+    if (!anonRef.current || !html2pdfRef.current) return
+    html2pdfRef.current()
+      .from(anonRef.current)
+      .set({
+        margin: 0.5,
+        filename: 'Resume_Anonymised.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      })
+      .save()
+  }
+
   const skills = [
     'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
     'Azure, GCP, Hybrid Cloud Environments',
@@ -20,15 +45,20 @@ export default function ResumeAnonPage() {
   ]
 
   return (
-    <section className="section bg-gray-50">
+    <section ref={anonRef} className="section bg-gray-50 p-8">
       <div className="container max-w-3xl mx-auto space-y-8">
+        {/* Header */}
         <div>
           <h1 className="text-4xl font-bold">Site Reliability Engineer & DevOps Lead</h1>
           <p className="text-lg text-gray-700 mt-1">Anonymised Candidate Profile</p>
+          <button onClick={downloadPdf} className="btn btn-primary mt-4">
+            Download Anonymised CV
+          </button>
         </div>
 
         <hr className="border-gray-300" />
 
+        {/* Professional Summary */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Professional Summary</h2>
           <p>
@@ -38,17 +68,17 @@ export default function ResumeAnonPage() {
 
         <hr className="border-gray-300" />
 
+        {/* Core Skills & Tools */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Core Skills & Tools</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
+            {skills.map(skill => <li key={skill}>{skill}</li>)}
           </ul>
         </div>
 
         <hr className="border-gray-300" />
 
+        {/* Certifications */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Certifications</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
@@ -60,30 +90,33 @@ export default function ResumeAnonPage() {
 
         <hr className="border-gray-300" />
 
+        {/* Experience Summary */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Experience Summary</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Current: SRE/DevOps Lead at a UK-based financial tech company, managing multi-region AWS and Kubernetes infrastructure</li>
-            <li>Previously: Cloud/DevOps Engineer for a US-based remote consultancy, driving IaC adoption, GitOps, and ML-enabled autoscaling</li>
-            <li>Past roles in IT Support and Systems Administration with growing responsibilities in infrastructure automation</li>
+            <li>Current: SRE/DevOps Lead at a UK-based financial tech company, managing multi-region AWS and Kubernetes</li>
+            <li>Previously: Cloud/DevOps Engineer for a US-based remote consultancy, driving IaC, GitOps, ML-enabled autoscaling</li>
+            <li>Past IT Support/Admin roles with growing infrastructure automation responsibilities</li>
           </ul>
         </div>
 
         <hr className="border-gray-300" />
 
+        {/* Notable Achievements */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Notable Achievements</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Reduced AWS spend by 25%+ through FinOps tools, Reserved Instances, and cost anomaly detection</li>
-            <li>Built autoscaling EKS environments using ML metrics for resource efficiency</li>
-            <li>Created GitOps workflows that doubled deployment speed and release confidence</li>
-            <li>Migrated legacy workloads to AWS Lambda and Fargate, cutting infrastructure costs by 60%</li>
-            <li>Developed ChatOps automation with Slack and AWS Chatbot for real-time alerts and releases</li>
+            <li>Reduced AWS spend by 25%+ via FinOps tools, RIs and anomaly detection</li>
+            <li>Built ML-driven autoscaling for EKS, improving resource use by 35%</li>
+            <li>Created GitOps workflows doubling deployment speed and confidence</li>
+            <li>Migrated legacy workloads to serverless (Lambda & Fargate), cutting costs by 60%</li>
+            <li>Automated ChatOps with AWS Chatbot & Slack for real-time alerts</li>
           </ul>
         </div>
 
         <hr className="border-gray-300" />
 
+        {/* Education */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Education</h2>
           <p className="text-gray-700">
@@ -94,25 +127,22 @@ export default function ResumeAnonPage() {
 
         <hr className="border-gray-300" />
 
+        {/* Recruiter Notes */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Recruiter Notes</h2>
           <p className="text-gray-700">
-            This anonymised profile highlights the candidate’s strengths in AWS architecture, Kubernetes, automation, and cost optimisation. Contact for full profile, references, or availability confirmation.
+            Anonymised profile highlights strengths in AWS architecture, Kubernetes, automation, and cost optimisation. Full details and references available on request.
           </p>
         </div>
 
         <hr className="border-gray-300" />
 
+        {/* Availability & Work Rights */}
         <div className="pb-8">
           <h2 className="text-2xl font-semibold mb-3">Availability & Work Rights</h2>
           <p className="text-gray-700">
-            UK-based candidate with valid sponsored visa. Open to remote, hybrid or UK on-site opportunities.
+            UK-based candidate with valid sponsored visa. Open to remote, hybrid or on-site opportunities.
           </p>
-          <div className="mt-4">
-            <a href="/api/resume-anon/pdf" download className="btn btn-primary">
-              Download Anonymised Resume (PDF)
-            </a>
-          </div>
         </div>
       </div>
     </section>
