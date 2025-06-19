@@ -1,47 +1,39 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
-import type { jsPDFOptions } from 'jspdf'
-import dynamic from 'next/dynamic'
 
 const ResumePage = () => {
-  const resumeRef = useRef<HTMLElement>(null)
-
-  type Html2PdfType = {
-    from: (element: HTMLElement) => {
-      set: (options: {
-        margin: number
-        filename: string
-        image: { type: string; quality: number }
-        html2canvas: { scale: number }
-        jsPDF: jsPDFOptions
-      }) => {
-        save: () => void
-      }
-    }
-  }
-
-  const html2pdfRef = useRef<Html2PdfType | null>(null)
+  const resumeRef = useRef<HTMLDivElement>(null)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    import('html2pdf.js').then((mod) => {
-      html2pdfRef.current = mod.default || mod
-    })
+    setIsClient(true)
   }, [])
 
-  const downloadPdf = () => {
-    if (!resumeRef.current || !html2pdfRef.current) return
-    const element = resumeRef.current
-    const opt = {
-      margin: 0.5,
-      filename: 'Adesoji_Adejoro_Resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  const downloadPdf = async () => {
+    if (!resumeRef.current || !isClient) return
+    
+    try {
+      // Dynamically import html2pdf.js only on client side
+      const html2pdf = (await import('html2pdf.js')).default
+      
+      const element = resumeRef.current
+      const opt = {
+        margin: 0.5,
+        filename: 'Adesoji_Adejoro_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' as const }
+      }
+      
+      // Correct API usage
+      html2pdf().set(opt).from(element).save()
+    } catch (error) {
+      console.error('Error generating PDF:', error)
     }
-    html2pdfRef.current.from(element).set(opt).save()
   }
+
   const skills = [
     'AWS (EC2, EKS, Lambda, RDS, IAM, CloudWatch)',
     'Azure, GCP, Hybrid Cloud Environments',
@@ -63,13 +55,17 @@ const ResumePage = () => {
           content="Adesoji Adejoro – SRE & DevOps professional specialising in AWS, Kubernetes, CI/CD, automation and incident response."
         />
       </Head>
-      <section ref={resumeRef} className="section bg-gray-50 p-8">
+      <div ref={resumeRef} className="section bg-gray-50 p-8">
         <div className="container max-w-3xl mx-auto space-y-8">
           <div>
             <h1 className="text-4xl font-bold">Adesoji Adejoro</h1>
             <p className="text-lg text-gray-700 mt-1">Site Reliability Engineer & DevOps Lead</p>
             <div className="flex gap-4 mt-4">
-              <button onClick={downloadPdf} className="btn btn-primary">
+              <button 
+                onClick={downloadPdf} 
+                className="btn btn-primary"
+                disabled={!isClient}
+              >
                 Download Full CV
               </button>
               <a href="/resume-anon" className="btn btn-secondary">
@@ -137,7 +133,7 @@ const ResumePage = () => {
                   <li>Reduced environment setup time by 40% via automation</li>
                 </ul>
               </li>
-                         <li><strong>GCI/Nastaar – Build Engineer (2020 – 2021)</strong>
+              <li><strong>GCI/Nastaar – Build Engineer (2020 – 2021)</strong>
                 <ul className="list-disc pl-5">
                   <li>Built and packaged .NET/Java applications for QA/UAT</li>
                   <li>Maintained TeamCity build pipelines and artifact versioning</li>
@@ -149,7 +145,7 @@ const ResumePage = () => {
                   <li>Reduced build errors via static code checks</li>
                 </ul>
               </li>
-                            <li><strong>Kinetik – Web/System Admin (2020 – 2021)</strong>
+              <li><strong>Kinetik – Web/System Admin (2020 – 2021)</strong>
                 <ul className="list-disc pl-5">
                   <li>Managed internal servers, backups, and domain policies</li>
                   <li>Provided L1/L2 support and patch updates for Windows systems</li>
@@ -185,7 +181,7 @@ const ResumePage = () => {
                   <li>Monitored basic endpoint performance</li>
                 </ul>
               </li>
-              <li><strong>Governor’s Office Junior IT Support – State IT Agency (2014 – 2015)</strong>
+              <li><strong>Governor&apos;s Office Junior IT Support – State IT Agency (2014 – 2015)</strong>
                 <ul className="list-disc pl-5">
                   <li>Shadowed senior engineers on systems configuration</li>
                   <li>Supported admin tasks and procurement of devices</li>
@@ -241,7 +237,9 @@ const ResumePage = () => {
             <p className="text-gray-700">Available upon request.</p>
           </div>
         </div>
-      </section>
+      </div>
     </>
   )
 }
+
+export default ResumePage
