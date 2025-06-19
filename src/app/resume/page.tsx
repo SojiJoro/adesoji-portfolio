@@ -97,18 +97,24 @@ export default function ResumePage() {
           </div>
 
           {/* Beyond Cloud Solutions */}
-          <div className="space-y-2 mb-6">
-            <h3 className="text-xl font-bold">DevOps Engineer</h3>
-            <p className="text-sm text-gray-600">
-              Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022
-            </p>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
-              <li>Ran containerised apps on Kubernetes, improving uptime and scalability</li>
-              <li>Monitored and tuned PostgreSQL with pgAdmin for performance</li>
-              <li>Wrote PowerShell scripts for VPN setup and software deployment</li>
-              <li>Built AWS/Azure IaC modules with Terraform to standardise deployments</li>
-            </ul>
-          </div>
+<div className="space-y-2 mb-6">
+  <h3 className="text-xl font-bold">DevOps Engineer</h3>
+  <p className="text-base text-gray-700">
+    Beyond Cloud Solutions (Remote / Texas-based) • Jan 2021 – Dec 2022
+  </p>
+  <ul className="list-disc pl-5 space-y-1 text-gray-700">
+    <li>Engineered scalable Kubernetes clusters with Helm and Argo CD, boosting reliability and reducing incident rates by 40%</li>
+    <li>Implemented GitOps workflows and CI/CD pipelines using GitLab CI and Jenkins, accelerating deployment frequency by 50%</li>
+    <li>Optimised PostgreSQL performance tuning with automated pgTune scripts, achieving 30% faster query response</li>
+    <li>Developed AI-driven monitoring alerts using Prometheus and Grafana Loki, proactively identifying anomalies</li>
+    <li>Automated VPN and software provisioning with PowerShell DSC and AWS Systems Manager, saving 15 engineer hours weekly</li>
+    <li>Designed Infrastructure-as-Code modules for AWS & Azure with Terraform v1.5 and Azure Bicep, ensuring compliance and repeatability</li>
+    <li>Migrated legacy workloads to serverless architectures (AWS Lambda & Fargate), reducing operational costs by 60%</li>
+    <li>Integrated FinOps practices with AWS Cost Explorer, Budgets and Anomaly Detection to cut monthly cloud spend by 20%</li>
+    <li>Built ChatOps tooling using AWS Chatbot and Slack, enabling real-time deployment status and incident notifications</li>
+    <li>Piloted ML-driven autoscaling policies with Kubernetes HPA and AWS SageMaker metrics, improving resource utilisation by 35%</li>
+  </ul>
+</div>
 
           {/* Kinetik */}
           <div className="space-y-2 mb-6">
