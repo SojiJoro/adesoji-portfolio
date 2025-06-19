@@ -1,9 +1,8 @@
-// src/app/api/resume/pdf/route.ts
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import puppeteer from 'puppeteer-core'
 
 export async function GET(req: NextRequest) {
-  const url = `${req.nextUrl.origin}/resume`
+  const url = `${req.nextUrl.origin}/resume-anon`
 
   const browser = await puppeteer.launch({
     headless: true,
@@ -16,10 +15,11 @@ export async function GET(req: NextRequest) {
   const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true })
   await browser.close()
 
-  return new Response(pdfBuffer, {
+  return new NextResponse(pdfBuffer, {
+    status: 200,
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="Adesoji_Adejoro_Resume.pdf"',
-    },
+      'Content-Disposition': 'attachment; filename="Resume_Anonymised.pdf"'
+    }
   })
 }
