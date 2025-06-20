@@ -596,23 +596,6 @@ li {
   color: var(--color-text-light);
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-light: #111827;
-    --color-white: #1f2937;
-    --color-text-dark: #f9fafb;
-    --color-text-gray: #cbd5e0;
-  }
-  
-  .highlight-card {
-    background-color: var(--color-bg-dark-secondary);
-  }
-  
-  .navbar {
-    background-color: rgba(31, 41, 55, 0.95);
-  }
-}
 
 /* =========================
    9. PAGE-SPECIFIC STYLES
