@@ -137,7 +137,7 @@ const resources: Resource[] = [
     }
   },
   {
-    title: 'How to Migrate from On-Prem to AWS',
+    title: 'How to Migrate from On Prem to AWS',
     description: 'Step-by-step guide for moving infrastructure to AWS.',
     icon: Cloud,
     action: {
@@ -258,7 +258,7 @@ export default function ResourcesPage() {
             Free <span className="highlight">Resources</span>
           </h1>
           <p className="hero__subtitle max-w-3xl mx-auto">
-            Practical guides, templates, and tools to help you optimize your cloud infrastructure and improve your DevOps practices
+            Practical guides, templates, and tools to help you optimise your cloud infrastructure and improve your DevOps practices
           </p>
         </div>
       </section>
@@ -276,27 +276,15 @@ export default function ResourcesPage() {
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  {resource.badge && (
-                    <span className="resource-badge">{resource.badge}</span>
-                  )}
-                  
                   <div className="resource-icon">
                     <Icon className="h-8 w-8" />
                   </div>
-                  
+
                   <h3 className="resource-title">{resource.title}</h3>
-                  
+
                   <p className="resource-description">
                     {resource.description}
                   </p>
-                  
-                  {resource.stats && (
-                    <div className="resource-stats">
-                      <span className="stats-icon">📊</span>
-                      <span>{resource.stats}</span>
-                    </div>
-                  )}
-                  
                   <div className="resource-action">
                     {resource.action.type === 'download' ? (
                       <a
