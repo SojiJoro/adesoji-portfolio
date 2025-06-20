@@ -389,6 +389,22 @@ li {
   padding: var(--space-md) var(--space-xl);
 }
 
+/* Mobile menu toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text-dark);
+}
+
 .navbar .logo {
   font-size: 1.25rem;
   font-weight: 700;
@@ -596,23 +612,6 @@ li {
   color: var(--color-text-light);
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-light: #111827;
-    --color-white: #1f2937;
-    --color-text-dark: #f9fafb;
-    --color-text-gray: #cbd5e0;
-  }
-  
-  .highlight-card {
-    background-color: var(--color-bg-dark-secondary);
-  }
-  
-  .navbar {
-    background-color: rgba(31, 41, 55, 0.95);
-  }
-}
 
 /* =========================
    9. PAGE-SPECIFIC STYLES
@@ -830,10 +829,24 @@ li {
 
 @media (max-width: 768px) {
   /* Navigation */
-  .navbar .nav-links {
+  .nav-toggle {
     display: flex;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    position: absolute;
+    right: var(--space-xl);
+    top: calc(100% + var(--space-sm));
     flex-direction: column;
     gap: var(--space-md);
+    background-color: var(--color-white);
+    padding: var(--space-md) var(--space-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .navbar.open .nav-links {
+    display: flex;
   }
   
   /* Hero */
