@@ -13,7 +13,8 @@ import {
   Code,
   Cloud,
   Shield,
-  Activity
+  Activity,
+  type LucideIcon
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -21,7 +22,21 @@ export const metadata: Metadata = {
   description: 'Downloadable guides, anonymised CV, Terraform modules and monitoring checklists to showcase expertise.',
 }
 
-const resources = [
+interface Resource {
+  title: string
+  description: string
+  icon: LucideIcon
+  action: {
+    type: 'download' | 'external'
+    href: string
+    text: string
+    primary: boolean
+  }
+  badge?: string
+  stats?: string
+}
+
+const resources: Resource[] = [
   {
     title: 'Adesoji Adejoro Resume',
     description: 'Full CV outlining experience and accomplishments.',
