@@ -2,7 +2,19 @@
 
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { Download, FileText, Github, Calendar, CheckCircle, DollarSign } from 'lucide-react'
+import {
+  Download,
+  FileText,
+  Github,
+  Calendar,
+  CheckCircle,
+  DollarSign,
+  Terminal,
+  Code,
+  Cloud,
+  Shield,
+  Activity
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Resources – Adesoji Adejoro',
@@ -11,48 +23,211 @@ export const metadata: Metadata = {
 
 const resources = [
   {
-    title: 'Anonymised Resume',
-    description: 'A skills-first version of my CV with achievements and metrics but without personal details. Focus on impact first.',
+    title: 'Adesoji Adejoro Resume',
+    description: 'Full CV outlining experience and accomplishments.',
     icon: FileText,
     action: {
       type: 'download',
-      href: '/documents/Resume_Anonymised.pdf',
-      text: 'Download Anonymised Resume',
+      href: '/documents/Adesoji_Adejoro_Resume.pdf',
+      text: 'Download Resume',
       primary: true
-    },
-    badge: 'Most Popular'
+    }
+  },
+  {
+    title: 'XTX Markets Infrastructure Systems Engineer',
+    description: 'Sample role description demonstrating infrastructure skills.',
+    icon: FileText,
+    action: {
+      type: 'download',
+      href: '/documents/XTX Markets - Infrastructure Systems Engineer.pdf',
+      text: 'Download PDF',
+      primary: false
+    }
+  },
+  {
+    title: 'AWS CLI IAM Cheat Sheet',
+    description: 'Quick reference for managing IAM with the AWS CLI.',
+    icon: Terminal,
+    action: {
+      type: 'download',
+      href: '/documents/aws_cli_iam_cheat_sheet.pdf',
+      text: 'Download Cheat Sheet',
+      primary: false
+    }
   },
   {
     title: 'AWS Cost Optimisation Checklist',
-    description: 'A short PDF guide outlining proven tactics to reduce AWS spend, illustrated with example Terraform snippets.',
+    description: 'Checklist of proven tactics to reduce AWS spend.',
     icon: DollarSign,
     action: {
       type: 'download',
-      href: '/documents/aws-cost-optimisation.pdf',
-      text: 'Download AWS Cost Guide',
+      href: '/documents/aws_cost_optimisation_checklist_styled.pdf',
+      text: 'Download Cost Guide',
       primary: false
-    },
-    stats: '25% average savings'
+    }
   },
   {
-    title: 'Terraform Module Example',
-    description: 'A reusable Terraform module (hosted on GitHub) demonstrating best practices: input validation, tagging, remote state, and multi-environment support.',
+    title: 'Bash EC2 CloudWatch Script',
+    description: 'Example script for sending EC2 metrics to CloudWatch.',
+    icon: Terminal,
+    action: {
+      type: 'download',
+      href: '/documents/bash_ec2_cloudwatch_script_fixed.pdf',
+      text: 'Download Script',
+      primary: false
+    }
+  },
+  {
+    title: 'DevOps Starter Kit',
+    description: 'Essential resources to kickstart DevOps projects.',
+    icon: Code,
+    action: {
+      type: 'download',
+      href: '/documents/devops_starter_kit_cleaned.pdf',
+      text: 'Download Starter Kit',
+      primary: false
+    }
+  },
+  {
+    title: 'Docker & Kubernetes YAML Reference',
+    description: 'Common YAML snippets for Docker and Kubernetes.',
+    icon: Code,
+    action: {
+      type: 'download',
+      href: '/documents/docker_k8s_yaml_reference.pdf',
+      text: 'Download Reference',
+      primary: false
+    }
+  },
+  {
+    title: 'Git Workflow Guide',
+    description: 'Best practices for branching and collaboration with Git.',
     icon: Github,
     action: {
-      type: 'external',
-      href: 'https://github.com/yourusername/terraform-module-example',
-      text: 'View on GitHub',
+      type: 'download',
+      href: '/documents/git_workflow_guide.pdf',
+      text: 'Download Guide',
+      primary: false
+    }
+  },
+  {
+    title: 'Global Stylesheet Template',
+    description: 'Reusable CSS variables and styles for new projects.',
+    icon: Code,
+    action: {
+      type: 'download',
+      href: '/documents/globals-updated.css',
+      text: 'Download CSS',
+      primary: false
+    }
+  },
+  {
+    title: 'How to Migrate from On-Prem to AWS',
+    description: 'Step-by-step guide for moving infrastructure to AWS.',
+    icon: Cloud,
+    action: {
+      type: 'download',
+      href: '/documents/how_to_migrate_from_onprem_to_aws.pdf',
+      text: 'Download Guide',
+      primary: false
+    }
+  },
+  {
+    title: 'Infrastructure as Code Project Template',
+    description: 'Template structure for new IaC repositories.',
+    icon: Code,
+    action: {
+      type: 'download',
+      href: '/documents/iac_project_template.pdf',
+      text: 'Download Template',
+      primary: false
+    }
+  },
+  {
+    title: 'Incident Response Playbook',
+    description: 'Practical steps for handling infrastructure incidents.',
+    icon: CheckCircle,
+    action: {
+      type: 'download',
+      href: '/documents/incident_response_playbook.pdf',
+      text: 'Download Playbook',
+      primary: false
+    }
+  },
+  {
+    title: 'Linux Command Cheat Sheet',
+    description: 'Handy reference of common Linux commands.',
+    icon: Terminal,
+    action: {
+      type: 'download',
+      href: '/documents/linux_command_cheat_sheet.pdf',
+      text: 'Download Cheat Sheet',
       primary: false
     }
   },
   {
     title: 'Monitoring & Alerting Checklist',
-    description: 'A PDF checklist covering essential metrics and alerts for cloud services (EC2, RDS, Kubernetes, etc.), so you can quickly assess or improve your observability.',
+    description: 'Key metrics and alerts to monitor your infrastructure.',
     icon: CheckCircle,
     action: {
       type: 'download',
-      href: '/documents/monitoring-checklist.pdf',
-      text: 'Download Monitoring Checklist',
+      href: '/documents/monitoring_alerting_checklist_styled.pdf',
+      text: 'Download Checklist',
+      primary: false
+    }
+  },
+  {
+    title: 'Security Best Practices for Small Teams',
+    description: 'Recommendations to secure environments with limited resources.',
+    icon: Shield,
+    action: {
+      type: 'download',
+      href: '/documents/security_best_practices_small_teams.pdf',
+      text: 'Download Guide',
+      primary: false
+    }
+  },
+  {
+    title: 'SRE Daily Health Checklist',
+    description: 'Daily tasks to ensure services remain reliable.',
+    icon: Activity,
+    action: {
+      type: 'download',
+      href: '/documents/sre_daily_health_checklist.pdf',
+      text: 'Download Checklist',
+      primary: false
+    }
+  },
+  {
+    title: 'Terraform CLI Cheat Sheet',
+    description: 'Frequently used Terraform CLI commands.',
+    icon: Terminal,
+    action: {
+      type: 'download',
+      href: '/documents/terraform_cli_cheat_sheet.pdf',
+      text: 'Download Cheat Sheet',
+      primary: false
+    }
+  },
+  {
+    title: 'Terraform EC2 Module README',
+    description: 'Example README for a Terraform EC2 module.',
+    icon: Github,
+    action: {
+      type: 'download',
+      href: '/documents/terraform_ec2_module_readme_final_cleaned.pdf',
+      text: 'Download README',
+      primary: false
+    }
+  },
+  {
+    title: 'VSCode Extensions and Settings',
+    description: 'Recommended extensions and editor configuration.',
+    icon: Code,
+    action: {
+      type: 'download',
+      href: '/documents/vscode_extensions_and_settings.pdf',
+      text: 'Download Guide',
       primary: false
     }
   }
