@@ -29,55 +29,55 @@ const blogData: Record<string, BlogPost> = {
     category: 'Cloud Optimization',
     tags: ['AWS', 'FinOps', 'Cost Optimization', 'Cloud'],
     content: `
-When I started my current role, our AWS bill was growing 15% month-over-month. The CTO was concerned, and rightfully so. Here's how we reversed the trend and achieved sustainable cost savings.
+When I started my current role, our AWS bill was steadily increasing each month. Leadership was concerned, and rightfully so. Here's how we reversed the trend and achieved sustainable cost savings.
 
 The Initial Assessment
 
 Our first step was conducting a comprehensive audit using AWS Cost Explorer and Trusted Advisor. The findings were eye-opening:
 
-• 40% of EC2 instances were over-provisioned
-• Zero use of Reserved Instances or Savings Plans
-• Unattached EBS volumes costing $2,000/month
+• A significant portion of EC2 instances were over-provisioned
+• We had not yet taken advantage of Reserved Instances or Savings Plans
+• Unattached EBS volumes were incurring unnecessary charges
 • S3 lifecycle policies were non-existent
 
 Implementation Strategy
 
 1. Right-Sizing EC2 Instances
 
-We deployed CloudWatch agents to collect memory and disk metrics (not available by default). After 2 weeks of data collection, we identified:
+We deployed CloudWatch agents to collect memory and disk metrics. After a period of data collection, we identified:
 
-- 15 instances running at <20% CPU utilization
-- 8 instances with <30% memory usage
-- 12 instances that could move to burstable T3 types
+- Multiple instances running at low CPU utilization
+- Others with low memory usage
+- Several workloads that could move to burstable T3 types
 
-Result: $8,000/month saved by right-sizing
+Result: significant monthly savings by right-sizing
 
 2. Reserved Instances & Savings Plans
 
 Analyzed our steady-state workloads and committed to:
-- 3-year All Upfront RIs for production databases
-- 1-year Compute Savings Plans for variable workloads
-- Kept 20% capacity on-demand for flexibility
+- Multi-year Reserved Instances for production databases
+- Compute Savings Plans for variable workloads
+- Kept some capacity on-demand for flexibility
 
-Result: $12,000/month saved (42% discount on compute)
+Result: substantial savings on compute costs
 
 3. Storage Optimization
 
 Implemented S3 lifecycle policies:
-- Move logs to Glacier after 30 days
-- Delete non-production backups after 90 days
+- Move logs to Glacier after a set period
+- Delete non-production backups after a fixed retention
 - Enabled S3 Intelligent-Tiering for uncertain access patterns
 
-Result: $3,500/month saved on storage
+Result: major reduction in storage costs
 
 4. Automation & Governance
 
 Built Lambda functions to:
-- Stop non-production instances on weekends
-- Delete unattached EBS volumes after 7 days
+- Stop non-production instances outside business hours
+- Delete unattached EBS volumes after a short period
 - Alert on anomalous spending increases
 
-Result: $2,500/month saved + prevented cost creep
+Result: additional savings and prevented cost creep
 
 Lessons Learned
 
