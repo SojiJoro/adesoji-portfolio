@@ -62,7 +62,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-r text-white" data-aos="fade-up">
         <div className="container max-w-3xl text-center">
           <h2 className="text-white mb-4">Explore Value-Added Resources</h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-xl mb-8 text-white">
             Discover tools, templates, and guides to enhance your DevOps journey
           </p>
           <Link href="/resources" className="btn btn-secondary cta-button">
