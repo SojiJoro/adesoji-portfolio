@@ -1,9 +1,11 @@
 // src/app/blog/[slug]/page.tsx
 
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { ArrowLeft, Calendar, Clock, Tag, Share2, Twitter, Linkedin } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react'
+import ShareButtons from '@/components/ShareButtons'
 
 interface BlogPost {
   title: string
@@ -344,32 +346,7 @@ export default async function BlogPostPage({
           {/* Share Section */}
           <div className="blog-share">
             <h3>Share this article</h3>
-            <div className="share-buttons">
-              <button 
-                className="share-btn share-twitter"
-                onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
-              >
-                <Twitter className="h-5 w-5" />
-                Twitter
-              </button>
-              <button 
-                className="share-btn share-linkedin"
-                onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
-              >
-                <Linkedin className="h-5 w-5" />
-                LinkedIn
-              </button>
-              <button 
-                className="share-btn share-copy"
-                onClick={() => {
-                  navigator.clipboard.writeText(window.location.href)
-                  alert('Link copied to clipboard!')
-                }}
-              >
-                <Share2 className="h-5 w-5" />
-                Copy Link
-              </button>
-            </div>
+            <ShareButtons title={post.title} />
           </div>
 
           {/* Author Bio */}

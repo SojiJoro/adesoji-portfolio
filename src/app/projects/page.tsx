@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                 I specialize in reducing cloud costs while improving performance and reliability.
               </p>
               <Link href="/contact" className="btn btn-primary">
-                Let's Discuss Your Infrastructure
+                Let&apos;s Discuss Your Infrastructure
               </Link>
             </div>
           </div>

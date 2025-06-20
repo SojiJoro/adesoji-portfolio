@@ -1,7 +1,6 @@
 'use client'
 
 import ContactForm from './ContactForm'
-import type { Metadata } from 'next'
 import { Mail, MessageSquare, Clock } from 'lucide-react'
 
 // Note: Metadata exports don't work in Client Components
@@ -21,7 +20,7 @@ export default function ContactPage() {
             Get in <span className="highlight">Touch</span>
           </h1>
           <p className="hero__subtitle max-w-2xl mx-auto">
-            Whether you've got a question, idea, or just want to say hello — I'm all ears
+            Whether you&apos;ve got a question, idea, or just want to say hello — I&apos;m all ears
           </p>
         </div>
       </section>
@@ -32,7 +31,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="contact-info" data-aos="fade-right">
-              <h2 className="mb-6">Let's Connect</h2>
+              <h2 className="mb-6">Let&apos;s Connect</h2>
               
               <div className="contact-methods">
                 <div className="contact-method">
@@ -70,7 +69,7 @@ export default function ContactPage() {
 
               <div className="contact-note">
                 <p>
-                  I'm happy to chat about:
+                  I&apos;m happy to chat about:
                 </p>
                 <ul className="contact-topics">
                   <li>SRE & DevOps consultations</li>
