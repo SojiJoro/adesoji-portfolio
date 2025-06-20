@@ -65,7 +65,7 @@ export default function HomePage() {
           <p className="text-xl mb-8 opacity-90">
             Discover tools, templates, and guides to enhance your DevOps journey
           </p>
-          <Link href="/resources" className="btn btn-secondary">
+          <Link href="/resources" className="btn btn-secondary cta-button">
             Browse Resources & Downloads
           </Link>
         </div>

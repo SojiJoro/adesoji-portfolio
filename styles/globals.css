@@ -303,6 +303,17 @@ li {
   transform: translateY(-2px);
 }
 
+/* Button variant for gradient CTA sections */
+.cta-button {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.cta-button:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
 .btn-learn-more {
   align-self: flex-start;
   padding: 0.625rem 1.5rem;
