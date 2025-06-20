@@ -1,6 +1,6 @@
 'use client'
 
-import ContactForm from './ContactForm'
+// ContactForm removed
 import { Mail, MessageSquare, Clock } from 'lucide-react'
 
 // Note: Metadata exports don't work in Client Components
@@ -80,18 +80,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="contact-form-wrapper" data-aos="fade-left">
-              <div className="contact-form-card">
-                <h3 className="text-center mb-6">Send a Message</h3>
-                <ContactForm />
-                <p className="form-footer">
-                  Prefer email? <a href="mailto:info@adesoji.dev" className="text-primary hover:underline">
-                    info@adesoji.dev
-                  </a>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
