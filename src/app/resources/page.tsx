@@ -38,28 +38,6 @@ interface Resource {
 
 const resources: Resource[] = [
   {
-    title: 'Adesoji Adejoro Resume',
-    description: 'Full CV outlining experience and accomplishments.',
-    icon: FileText,
-    action: {
-      type: 'download',
-      href: '/documents/Adesoji_Adejoro_Resume.pdf',
-      text: 'Download Resume',
-      primary: true
-    }
-  },
-  {
-    title: 'XTX Markets Infrastructure Systems Engineer',
-    description: 'Sample role description demonstrating infrastructure skills.',
-    icon: FileText,
-    action: {
-      type: 'download',
-      href: '/documents/XTX Markets - Infrastructure Systems Engineer.pdf',
-      text: 'Download PDF',
-      primary: false
-    }
-  },
-  {
     title: 'AWS CLI IAM Cheat Sheet',
     description: 'Quick reference for managing IAM with the AWS CLI.',
     icon: Terminal,
