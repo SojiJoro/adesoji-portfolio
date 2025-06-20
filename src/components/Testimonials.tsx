@@ -93,7 +93,7 @@ export default function Testimonials() {
         <div className="testimonial-content">
           <blockquote>
             <p className="testimonial-quote">
-              "{testimonials[activeIndex].quote}"
+              &ldquo;{testimonials[activeIndex].quote}&rdquo;
             </p>
             
             {testimonials[activeIndex].highlight && (

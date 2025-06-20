@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Download, FileText, Mail, Linkedin, Github, Calendar } from 'lucide-react'
+import { Download, FileText, Mail, Linkedin, Github } from 'lucide-react'
 
 const ResumePage = () => {
   const resumeRef = useRef<HTMLDivElement>(null)

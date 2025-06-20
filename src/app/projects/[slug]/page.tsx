@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { ArrowLeft, Clock, CheckCircle, Code, Lightbulb, Layers, Target, ChevronRight } from 'lucide-react'
+import { ArrowLeft, CheckCircle, Code, Lightbulb, Layers, Target, ChevronRight } from 'lucide-react'
+import React from 'react'
 
 interface ProjectDetail {
   heading: string
@@ -227,7 +228,7 @@ const projectData: Record<string, Project> = {
 
 // Helper function to get icon based on heading
 const getIconForHeading = (heading: string) => {
-  const iconMap: Record<string, any> = {
+  const iconMap: Record<string, React.ElementType> = {
     'Overview': Layers,
     'System Architecture': Code,
     'Architecture': Code,
@@ -336,7 +337,7 @@ export default async function ProjectPage({
           <div className="project-cta" data-aos="fade-up">
             <div className="cta-content">
               <h3>Interested in Similar Solutions?</h3>
-              <p>Let's discuss how I can help optimize your infrastructure</p>
+              <p>Let&apos;s discuss how I can help optimize your infrastructure</p>
               <div className="cta-buttons">
                 <Link href="/contact" className="btn btn-primary">
                   Get in Touch
