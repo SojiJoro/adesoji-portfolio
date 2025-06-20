@@ -10,7 +10,9 @@ export default function Navbar() {
   return (
     <nav className={`navbar${open ? ' open' : ''}`}> 
       <div className="container">
-        <div className="logo">Adesoji</div>
+        <Link href="/" className="logo">
+          Adesoji
+        </Link>
         <button
           className="nav-toggle"
           aria-label="Toggle navigation"
