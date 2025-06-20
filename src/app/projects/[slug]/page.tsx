@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { ArrowLeft, Clock, CheckCircle, Code, Lightbulb, Layers, Target, ChevronRight } from 'lucide-react'
 
 interface ProjectDetail {
   heading: string
@@ -15,6 +16,7 @@ interface Project {
   details: ProjectDetail[]
 }
 
+// Keep the original projectData unchanged
 const projectData: Record<string, Project> = {
   'rds-failover': {
     title: 'AWS RDS Global Database Failover',
@@ -28,7 +30,7 @@ const projectData: Record<string, Project> = {
       {
         heading: 'System Architecture',
         content:
-          'Deployed an Aurora Global Database with a secondary writer in eu-central-1. A Route 53 health check watches the primary writer endpoint. If it fails, DNS automatically flips to the secondary’s endpoint within 60 seconds.',
+          'Deployed an Aurora Global Database with a secondary writer in eu-central-1. A Route 53 health check watches the primary writer endpoint. If it fails, DNS automatically flips to the secondary\'s endpoint within 60 seconds.',
       },
       {
         heading: 'Implementation Steps',
@@ -99,7 +101,7 @@ const projectData: Record<string, Project> = {
       {
         heading: 'Lessons Learned',
         content:
-          'Automating dashboard provisioning via Terraform would ensure reproducibility. We plan to evaluate Grafana’s new Cloud offerings next.',
+          "Automating dashboard provisioning via Terraform would ensure reproducibility. We plan to evaluate Grafana's new Cloud offerings next.",
       },
       {
         heading: 'Technologies',
@@ -130,7 +132,7 @@ const projectData: Record<string, Project> = {
       {
         heading: 'Email Parsing Logic',
         content:
-          'Regex patterns identify ticket category (bug, feature, question). Default priority set to “High” for certain keywords. Attachments stored in S3 and linked in Jira.',
+          'Regex patterns identify ticket category (bug, feature, question). Default priority set to "High" for certain keywords. Attachments stored in S3 and linked in Jira.',
       },
       {
         heading: 'Outcome',
@@ -223,12 +225,41 @@ const projectData: Record<string, Project> = {
   },
 }
 
-// 1. generateStaticParams remains synchronous:
+// Helper function to get icon based on heading
+const getIconForHeading = (heading: string) => {
+  const iconMap: Record<string, any> = {
+    'Overview': Layers,
+    'System Architecture': Code,
+    'Architecture': Code,
+    'Infrastructure': Code,
+    'Implementation Steps': CheckCircle,
+    'Testing & Validation': Target,
+    'Results & Metrics': CheckCircle,
+    'Results': CheckCircle,
+    'Outcomes': CheckCircle,
+    'Outcome': CheckCircle,
+    'Lessons Learned': Lightbulb,
+    'Next Steps': ChevronRight,
+    'Technologies': Code,
+    'Solution': Lightbulb,
+    'Integration': Code,
+    'Dashboard': Target,
+    'Key Dashboards': Target,
+    'Alerting Rules': Target,
+    'Email Parsing Logic': Code,
+    'Kubernetes RBAC': Shield,
+    'User Onboarding': Users,
+  }
+  return iconMap[heading] || Code
+}
+
+// Import additional icons
+import { Shield, Users } from 'lucide-react'
+
 export function generateStaticParams() {
   return Object.keys(projectData).map((slug) => ({ slug }))
 }
 
-// 2. generateMetadata must treat params as Promise and await it:
 export async function generateMetadata({
   params,
 }: {
@@ -242,7 +273,6 @@ export async function generateMetadata({
   }
 }
 
-// 3. Page component must be async and await params:
 export default async function ProjectPage({
   params,
 }: {
@@ -253,48 +283,72 @@ export default async function ProjectPage({
   if (!project) notFound()
 
   return (
-    <section className="section bg-white">
-      <div className="container max-w-3xl space-y-8">
-        {/* Title & Description */}
-        <h1
-          className="text-4xl font-bold"
-          data-aos="fade-up"
-          data-aos-delay={100}
-        >
-          {project.title}
-        </h1>
-        <p
-          className="text-lg text-gray-600"
-          data-aos="fade-up"
-          data-aos-delay={200}
-        >
-          {project.description}
-        </p>
-
-        {/* Detailed Sections */}
-        {project.details.map(({ heading, content }, i) => (
-          <div
-            key={heading}
-            className="mt-large"
-            data-aos="fade-up"
-            data-aos-delay={300 + i * 100}
-          >
-            <h2 className="text-2xl font-semibold mb-2">{heading}</h2>
-            <p className="text-gray-700 whitespace-pre-line">{content}</p>
-          </div>
-        ))}
-
-        {/* Back Button */}
-        <div
-          className="mt-large"
-          data-aos="fade-up"
-          data-aos-delay={300 + project.details.length * 100}
-        >
-          <Link href="/projects" className="btn btn-outline">
-            ← Back to Projects
+    <main className="project-detail-page dark-theme min-h-screen">
+      {/* Hero Section */}
+      <section className="project-hero" data-aos="fade-up">
+        <div className="container">
+          <Link href="/projects" className="back-link">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Projects
           </Link>
+          
+          <h1 className="project-detail-title">
+            {project.title}
+          </h1>
+          
+          <p className="project-detail-description">
+            {project.description}
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Project Details */}
+      <section className="project-details-section">
+        <div className="container max-w-4xl">
+          <div className="details-grid">
+            {project.details.map((detail, i) => {
+              const Icon = getIconForHeading(detail.heading)
+              return (
+                <article
+                  key={detail.heading}
+                  className="detail-card"
+                  data-aos="fade-up"
+                  data-aos-delay={100 + i * 50}
+                >
+                  <div className="detail-header">
+                    <div className="detail-icon">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h2 className="detail-title">{detail.heading}</h2>
+                  </div>
+                  
+                  <div className="detail-content">
+                    {detail.content.split('\n').map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+
+          {/* CTA Section */}
+          <div className="project-cta" data-aos="fade-up">
+            <div className="cta-content">
+              <h3>Interested in Similar Solutions?</h3>
+              <p>Let's discuss how I can help optimize your infrastructure</p>
+              <div className="cta-buttons">
+                <Link href="/contact" className="btn btn-primary">
+                  Get in Touch
+                </Link>
+                <Link href="/projects" className="btn btn-outline">
+                  View More Projects
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }
