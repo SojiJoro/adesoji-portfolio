@@ -171,11 +171,11 @@ const ResumePage = () => {
               <h2 className="section-title">Experience</h2>
               
               <div className="experience-timeline">
-                {/* Eiger Trading Advisor */}
+                {/* Trading Firm */}
                 <div className="experience-item">
                   <div className="exp-header">
                     <h3>Site Reliability & Tech Support Lead</h3>
-                    <span className="exp-company">Eiger Trading Advisor Ltd</span>
+                    <span className="exp-company">Trading Firm</span>
                     <span className="exp-date">2022 – Present</span>
                   </div>
                   <ul className="exp-highlights">
@@ -190,11 +190,11 @@ const ResumePage = () => {
                   </ul>
                 </div>
 
-                {/* Beyond Cloud Solution */}
+                {/* Cloud Services Provider */}
                 <div className="experience-item">
                   <div className="exp-header">
                     <h3>DevOps Engineer</h3>
-                    <span className="exp-company">Beyond Cloud Solution</span>
+                    <span className="exp-company">Cloud Services Provider</span>
                     <span className="exp-date">2021 – 2022</span>
                   </div>
                   <ul className="exp-highlights">
@@ -213,7 +213,7 @@ const ResumePage = () => {
                 <div className="experience-item">
                   <div className="exp-header">
                     <h3>Build Engineer</h3>
-                    <span className="exp-company">GCI/Nastaar</span>
+                    <span className="exp-company">IT Services Company</span>
                     <span className="exp-date">2020 – 2021</span>
                   </div>
                   <ul className="exp-highlights">
