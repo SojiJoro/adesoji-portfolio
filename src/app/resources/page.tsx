@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import {
   Download,
+  FileText,
   Github,
   Calendar,
   CheckCircle,
@@ -36,6 +37,28 @@ interface Resource {
 }
 
 const resources: Resource[] = [
+  {
+    title: 'Adesoji Adejoro Resume',
+    description: 'Full CV outlining experience and accomplishments.',
+    icon: FileText,
+    action: {
+      type: 'download',
+      href: '/documents/Adesoji_Adejoro_Resume.pdf',
+      text: 'Download Resume',
+      primary: true
+    }
+  },
+  {
+    title: 'XTX Markets Infrastructure Systems Engineer',
+    description: 'Sample role description demonstrating infrastructure skills.',
+    icon: FileText,
+    action: {
+      type: 'download',
+      href: '/documents/XTX Markets - Infrastructure Systems Engineer.pdf',
+      text: 'Download PDF',
+      primary: false
+    }
+  },
   {
     title: 'AWS CLI IAM Cheat Sheet',
     description: 'Quick reference for managing IAM with the AWS CLI.',
@@ -114,7 +137,7 @@ const resources: Resource[] = [
     }
   },
   {
-    title: 'How to Migrate from On-Prem to AWS',
+    title: 'How to Migrate from On Prem to AWS',
     description: 'Step-by-step guide for moving infrastructure to AWS.',
     icon: Cloud,
     action: {
@@ -235,7 +258,7 @@ export default function ResourcesPage() {
             Free <span className="highlight">Resources</span>
           </h1>
           <p className="hero__subtitle max-w-3xl mx-auto">
-            Practical guides, templates, and tools to help you optimize your cloud infrastructure and improve your DevOps practices
+            Practical guides, templates, and tools to help you optimise your cloud infrastructure and improve your DevOps practices
           </p>
         </div>
       </section>

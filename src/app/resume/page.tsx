@@ -87,7 +87,7 @@ const ResumePage = () => {
                       <Mail className="h-4 w-4" />
                       <span>info@adesoji.dev</span>
                     </a>
-                    <a href="https://linkedin.com/in/adesoji" className="contact-item">
+                    <a href="https://www.linkedin.com/in/adesojiadejoro/" className="contact-item">
                       <Linkedin className="h-4 w-4" />
                       <span>LinkedIn</span>
                     </a>
