@@ -11,7 +11,7 @@ const testimonials = [
     quote: "Led our AWS cost reduction initiative, saving 25% annually while improving system resilience.",
     author: "Former Manager",
     role: "Engineering Director",
-    company: "Financial Services",
+    company: "Finance Industry",
     highlight: "25% cost savings"
   },
   {
@@ -19,7 +19,7 @@ const testimonials = [
     quote: "Automated our monitoring stack with Grafana & Prometheus, cutting MTTR by 70%.",
     author: "Lead Engineer",
     role: "Platform Lead",
-    company: "Beyond Cloud Solutions",
+    company: "Cloud Services Provider",
     highlight: "70% MTTR reduction"
   },
   {
@@ -27,7 +27,7 @@ const testimonials = [
     quote: "Created a seamless support automation in Jira that improved first-response by 50%.",
     author: "Support Ops Manager",
     role: "Operations Manager",
-    company: "Previous Employer",
+    company: "Tech Company",
     highlight: "50% faster response"
   }
 ]
