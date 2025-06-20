@@ -30,7 +30,7 @@ export default function AboutPage() {
             Multidisciplinary Site Reliability Engineer (SRE) and Technical Support Leader with 8+ years of hands-on experience across cloud infrastructure, DevOps, and end-user support operations. Adept at architecting and maintaining highly available, secure, and scalable systems using tools like AWS, Kubernetes, Terraform, Linux, and Docker. I bring a unique mix of cloud engineering, remote support leadership, and incident response expertise, driving both operational excellence and user satisfaction.
           </p>
           <p>
-            At Eiger Trading Advisors, I lead infrastructure monitoring and reliability across Amazon Web Services (AWS), managing EC2, RDS, CloudWatch, Route 53, IAM, and VPC resources, with a strong emphasis on automation and cost optimisation. I’ve also delivered success across CI/CD pipelines, IaC (Infrastructure as Code) with Terraform, and system observability using Grafana, Prometheus, and CloudWatch Logs.
+            Currently, I lead infrastructure monitoring and reliability across Amazon Web Services (AWS), managing EC2, RDS, CloudWatch, Route 53, IAM, and VPC resources, with a strong emphasis on automation and cost optimisation. I’ve also delivered success across CI/CD pipelines, IaC (Infrastructure as Code) with Terraform, and system observability using Grafana, Prometheus, and CloudWatch Logs.
           </p>
           <p>
             In previous roles, I’ve been the go-to engineer for:

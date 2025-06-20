@@ -29,9 +29,9 @@ const blogData: Record<string, BlogPost> = {
     category: 'Cloud Optimization',
     tags: ['AWS', 'FinOps', 'Cost Optimization', 'Cloud'],
     content: `
-When I joined Eiger Trading Advisors, our AWS bill was growing 15% month-over-month. The CFO was concerned, and rightfully so. Here's how we reversed the trend and achieved sustainable cost savings.
+When I started my current role, our AWS bill was growing 15% month-over-month. The CTO was concerned, and rightfully so. Here's how we reversed the trend and achieved sustainable cost savings.
 
-## The Initial Assessment
+The Initial Assessment
 
 Our first step was conducting a comprehensive audit using AWS Cost Explorer and Trusted Advisor. The findings were eye-opening:
 
@@ -40,9 +40,9 @@ Our first step was conducting a comprehensive audit using AWS Cost Explorer and 
 • Unattached EBS volumes costing $2,000/month
 • S3 lifecycle policies were non-existent
 
-## Implementation Strategy
+Implementation Strategy
 
-### 1. Right-Sizing EC2 Instances
+1. Right-Sizing EC2 Instances
 
 We deployed CloudWatch agents to collect memory and disk metrics (not available by default). After 2 weeks of data collection, we identified:
 
@@ -50,43 +50,43 @@ We deployed CloudWatch agents to collect memory and disk metrics (not available 
 - 8 instances with <30% memory usage
 - 12 instances that could move to burstable T3 types
 
-**Result**: $8,000/month saved by right-sizing
+Result: $8,000/month saved by right-sizing
 
-### 2. Reserved Instances & Savings Plans
+2. Reserved Instances & Savings Plans
 
 Analyzed our steady-state workloads and committed to:
 - 3-year All Upfront RIs for production databases
 - 1-year Compute Savings Plans for variable workloads
 - Kept 20% capacity on-demand for flexibility
 
-**Result**: $12,000/month saved (42% discount on compute)
+Result: $12,000/month saved (42% discount on compute)
 
-### 3. Storage Optimization
+3. Storage Optimization
 
 Implemented S3 lifecycle policies:
 - Move logs to Glacier after 30 days
 - Delete non-production backups after 90 days
 - Enabled S3 Intelligent-Tiering for uncertain access patterns
 
-**Result**: $3,500/month saved on storage
+Result: $3,500/month saved on storage
 
-### 4. Automation & Governance
+4. Automation & Governance
 
 Built Lambda functions to:
 - Stop non-production instances on weekends
 - Delete unattached EBS volumes after 7 days
 - Alert on anomalous spending increases
 
-**Result**: $2,500/month saved + prevented cost creep
+Result: $2,500/month saved + prevented cost creep
 
-## Lessons Learned
+Lessons Learned
 
-1. **Start with visibility**: You can't optimize what you can't measure
-2. **Involve the team**: Engineers often know where the waste is
-3. **Automate ruthlessly**: Manual cost management doesn't scale
-4. **Review regularly**: Cloud costs are not "set and forget"
+1. Start with visibility: You can't optimize what you can't measure
+2. Involve the team: Engineers often know where the waste is
+3. Automate ruthlessly: Manual cost management doesn't scale
+4. Review regularly: Cloud costs are not "set and forget"
 
-## Next Steps
+ Next Steps
 
 We're now exploring:
 - Kubernetes cost allocation with Kubecost
@@ -107,7 +107,7 @@ The journey to cost optimization never truly ends, but with the right approach, 
     content: `
 Being dyslexic in tech isn't always easy, but it's given me unique strengths that make me a better SRE. Here's my story and what I've learned about building inclusive teams.
 
-## The Challenge
+The Challenge
 
 Dyslexia affects how I process written information. In a field dominated by:
 - Code reviews
@@ -117,53 +117,53 @@ Dyslexia affects how I process written information. In a field dominated by:
 
 This could be seen as a disadvantage. But I've learned to turn it into a strength.
 
-## My Adaptations
+ My Adaptations
 
-### Visual Thinking
+ Visual Thinking
 I naturally think in diagrams and patterns. This helps me:
 - Design better system architectures
 - Spot anomalies in monitoring dashboards
 - Create clearer documentation with visuals
 
-### Automation Focus
+ Automation Focus
 Reading logs is challenging, so I've become obsessed with:
 - Creating better alerts that surface issues clearly
 - Building dashboards that tell stories visually
 - Automating repetitive tasks to reduce cognitive load
 
-### Communication Style
+ Communication Style
 I've developed techniques like:
 - Using voice notes for complex explanations
 - Creating video tutorials instead of written guides
 - Advocating for pair programming and mob sessions
 
-## Building Inclusive Teams
+ Building Inclusive Teams
 
 As a lead, I now champion:
 
-**Diverse Documentation**
+Diverse Documentation
 - Video walkthroughs alongside written docs
 - Diagram-first architecture reviews
 - Interactive runbooks with clear visual cues
 
-**Flexible Communication**
+Flexible Communication
 - Encourage various formats (video, audio, visual)
 - Regular face-to-face check-ins
 - Collaborative debugging sessions
 
-**Tool Selection**
+Tool Selection
 - IDEs with excellent syntax highlighting
 - Voice-to-text tools for documentation
 - Visual diff tools for code reviews
 
-## The Hidden Advantages
+ The Hidden Advantages
 
 Dyslexia has made me:
-1. **More empathetic**: I understand struggle and adaptation
-2. **Better at simplification**: Complex writing frustrates me, so I make things clearer
-3. **Innovative**: I find unconventional solutions because conventional ones don't always work for me
+1. More empathetic: I understand struggle and adaptation
+2. Better at simplification: Complex writing frustrates me, so I make things clearer
+3. Innovative: I find unconventional solutions because conventional ones don't always work for me
 
-## Advice for Others
+ Advice for Others
 
 If you're neurodivergent in tech:
 - Your perspective is valuable
@@ -177,7 +177,7 @@ If you're a manager:
 - Focus on outcomes, not methods
 - Create psychological safety for disclosure
 
-## Moving Forward
+ Moving Forward
 
 The tech industry is slowly recognizing the value of neurodiversity. By sharing our stories and advocating for inclusive practices, we can build better teams that leverage everyone's strengths.
 
