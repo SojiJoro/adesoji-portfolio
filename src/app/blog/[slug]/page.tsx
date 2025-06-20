@@ -1,4 +1,5 @@
 // src/app/blog/[slug]/page.tsx
+'use client'
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
